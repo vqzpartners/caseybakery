@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loyalty Points System</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <div class="loyalty-card">
+            <div class="card-header">
+                <img src="/img/casey/logo.png" alt="Logo" class="logo">
+                <h1>Loyalty Program</h1>
+                <p>Collect points and reach checkpoints to earn rewards!</p>
+            </div>
+            
+            <div class="checkpoints-container">
+                <div class="checkpoints" id="checkpoints">
+                    <!-- Checkpoints will be added here by JavaScript -->
+                </div>
+            </div>
+            
+            <div class="user-info">
+                <div class="current-user">
+                    <h2>Current User</h2>
+                    <div id="selected-user">No user selected</div>
+                    <div id="user-points">Points: 0</div>
+                </div>
+            </div>
+            
+            <div class="controls">
+                <div class="user-management">
+                    <h2>Manage Users</h2>
+                    <div class="input-group">
+                        <input type="text" id="username-input" placeholder="@username">
+                        <input type="number" id="points-input" placeholder="Points">
+                        <button id="add-user-btn">Add User</button>
+                    </div>
+                    <div class="input-group">
+                        <select id="user-select">
+                            <option value="">Select a user</option>
+                        </select>
+                        <button id="load-user-btn">Load User</button>
+                    </div>
+                </div>
+                
+                <div class="points-management">
+                    <h2>Update Points</h2>
+                    <div class="input-group">
+                        <input type="number" id="update-points" placeholder="Points to add">
+                        <button id="add-points-btn">Add Points</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html>
