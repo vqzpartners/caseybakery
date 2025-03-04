@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="img/casey/favicon.png" type="image/png">
+    <title>Page Not Found - Casey's Home Bakery</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Roboto Mono', monospace;
+        }
+        body {
+            background: #ac0201;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+        .container {
+            width: 100%;
+            max-width: 500px;
+        }
+        .loyalty-card {
+            background: white;
+            color: #ac0201;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            text-align: center;
+        }
+        .card-header {
+            padding: 20px;
+            border-bottom: 2px solid #ac0201;
+        }
+        .card-header h1 {
+            font-size: 48px;
+            color: #ac0201;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+        .card-content {
+            padding: 20px;
+        }
+        .card-content p {
+            margin-bottom: 20px;
+            color: #333;
+            font-size: 16px;
+        }
+        .link-button {
+            display: inline-block;
+            padding: 10px 20px;
+            border: 1px solid #ac0201;
+            border-radius: 4px;
+            background: #ac0201;
+            color: white;
+            text-decoration: none;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .link-button:hover {
+            background: #d03030;
+            transform: translateY(-2px);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="loyalty-card">
+            <div class="card-header">
+                <h1>404</h1>
+            </div>
+            <div class="card-content">
+                <p>Oops! The page you're looking for has gone on a bakery break.</p>
+                <p>It seems like this page might have been eaten by our delicious cookies!</p>
+                <a href="/" class="link-button">Return to Home</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
