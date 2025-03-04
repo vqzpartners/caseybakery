@@ -3,14 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Casey's Points System</title>
+    <title>Loyalty Points System</title>
     <link rel="shortcut icon" href="img/casey/favicon.png" type="image/png">
+    <!-- Add Roboto Mono Google Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;500;700&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Arial', sans-serif;
+            font-family: 'Roboto Mono', monospace;
         }
         body {
             background: #ac0201;
@@ -41,6 +45,7 @@
             font-size: 28px;
             margin-bottom: 10px;
             color: #ac0201;
+            font-weight: 700;
         }
         .card-header p {
             font-size: 16px;
@@ -51,7 +56,7 @@
             background: #f5f5f5;
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 10px;
+            gap: 20px;
             margin: 0 auto;
         }
         .sticker-spot {
@@ -62,7 +67,7 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            margin: 5px auto;
+            margin: 10px auto;
             position: relative;
             background-size: contain;
             background-repeat: no-repeat;
@@ -71,11 +76,14 @@
         .sticker-label {
             position: absolute;
             bottom: -25px;
-            width: 100%;
+            width: 120px; 
+            left: 50%;
+            transform: translateX(-50%);
             text-align: center;
             font-size: 12px;
             color: #ac0201;
-            font-weight: bold;
+            font-weight: 500;
+            white-space: nowrap;
         }
         .sticker-spot.completed {
             border: 2px solid #ac0201;
@@ -94,10 +102,11 @@
             margin-bottom: 10px;
             font-size: 20px;
             color: #ac0201;
+            font-weight: 700;
         }
         #selected-user {
             font-size: 24px;
-            font-weight: bold;
+            font-weight: 700;
             margin-bottom: 5px;
             color: #222;
             background: #e9e9e9;
@@ -108,6 +117,7 @@
         #user-checkpoint {
             font-size: 18px;
             color: #ac0201;
+            font-weight: 500;
         }
         .controls {
             padding: 20px;
@@ -119,6 +129,7 @@
             margin-bottom: 10px;
             font-size: 20px;
             color: #ac0201;
+            font-weight: 700;
         }
         .input-group {
             display: flex;
@@ -129,6 +140,7 @@
             padding: 10px;
             border: 1px solid #ac0201;
             border-radius: 4px;
+            font-family: 'Roboto Mono', monospace;
         }
         input, select {
             flex: 1;
@@ -138,7 +150,7 @@
         button {
             background: #ac0201;
             color: white;
-            font-weight: bold;
+            font-weight: 700;
             cursor: pointer;
             transition: all 0.3s ease;
             min-width: 120px;
@@ -171,9 +183,9 @@
             padding: 8px 12px;
             background-color: #000000;
             color: white;
-            font-family: Arial, sans-serif;
+            font-family: 'Roboto Mono', monospace;
             font-size: 14px;
-            font-weight: bold;
+            font-weight: 700;
             border-radius: 50px;
             border: 2px solid white;
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
@@ -203,6 +215,55 @@
             margin: 0 auto;
             line-height: 1.4;
         }
+        
+        /* Toast Notification Styles */
+        .toast-container {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
+        }
+        .toast {
+            background: #333;
+            color: white;
+            padding: 12px 20px;
+            border-radius: 8px;
+            margin-bottom: 10px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+            display: flex;
+            align-items: center;
+            max-width: 300px;
+            animation: slideIn 0.3s ease, fadeOut 0.5s ease 2.5s forwards;
+            position: relative;
+            font-family: 'Roboto Mono', monospace;
+        }
+        .toast.success {
+            background: #28a745;
+        }
+        .toast.error {
+            background: #dc3545;
+        }
+        .toast.info {
+            background: #17a2b8;
+        }
+        .toast-message {
+            margin-left: 10px;
+            font-size: 14px;
+            font-weight: 500;
+        }
+        .toast-icon {
+            font-size: 20px;
+        }
+        
+        @keyframes slideIn {
+            from { transform: translateX(100%); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+        
+        @keyframes fadeOut {
+            from { opacity: 1; }
+            to { opacity: 0; }
+        }
     </style>
 </head>
 <body>
@@ -210,7 +271,7 @@
         <div class="loyalty-card">
             <div class="card-header">
                 <h1>Loyalty Program</h1>
-                <p>Collect stamps and reach checkpoints to earn rewards!</p>
+                <p>collect stamps and reach checkpoints to earn rewards!</p>
             </div>
             
             <div class="sticker-board" id="sticker-board">
@@ -220,8 +281,8 @@
             <div class="user-info">
                 <div class="current-user">
                     <h2>Your Loyalty Card</h2>
-                    <div id="selected-user">No username set</div>
-                    <div id="user-checkpoint">Current Level: None</div>
+                    <div id="selected-user">no username set</div>
+                    <div id="user-checkpoint">current Level: None</div>
                 </div>
             </div>
             
@@ -230,17 +291,17 @@
                     <h2>Setup Your Card</h2>
                     <div class="input-group">
                         <input type="text" id="username-input" placeholder="Enter your username">
-                        <button id="save-username-btn">Save Username</button>
+                        <button id="save-username-btn">save Username</button>
                     </div>
                 </div>
                 
                 <div class="dashboard-toggle" style="text-align: center;">
-                    <button id="admin-dashboard-btn">Admin Dashboard</button>
+                    <button id="admin-dashboard-btn">dashboard</button>
                 </div>
                 
                 <div class="checkpoint-management">
                     <div class="admin-controls" id="admin-controls">
-                        <h2>Admin Controls</h2>
+                        <h2>dashboard controls</h2>
                         <div class="input-group">
                             <input type="password" id="admin-password" placeholder="Admin Password">
                         </div>
@@ -249,10 +310,10 @@
                                 <option value="">Select checkpoint level</option>
                                 <option value="1">Level 1: Sweet Supporter</option>
                                 <option value="2">Level 2: Coconut Fan</option>
-                                <option value="3">Level 3: Chocolate Chip Champ</option>
-                                <option value="4">Level 4: Butterscotch Boss</option>
-                                <option value="5">Level 5: Ultimate Hello Dolly</option>
-                                <option value="6">Level 6: Free Hello Dolly!</option>
+                                <option value="3">Level 3: Chips Champ</option>
+                                <option value="4">Level 4: Butter Boss</option>
+                                <option value="5">Level 5: Dolly Pro</option>
+                                <option value="6">Level 6: Free Dollies!</option>
                             </select>
                         </div>
                         <div class="input-group">
@@ -264,7 +325,7 @@
             </div>
             
             <div class="disclaimer">
-                <p>Your loyalty card data is stored on this device only. Clearing your browser data or cookies will erase your progress. Please speak with our staff if you need to recover your previous loyalty status.</p>
+                <p>your loyalty card data is stored on this device only. clearing your browser data or cookies will erase your progress.</p>
             </div>
         </div>
     </div>
@@ -274,8 +335,11 @@
         <span>partners</span>
     </a>
     
+    <!-- Toast notification container -->
+    <div class="toast-container" id="toast-container"></div>
+    
     <script>
-const _0x22fd50=_0x5083;(function(_0x148f74,_0x346909){const _0x1b0f80=_0x5083,_0xce3c9a=_0x148f74();while(!![]){try{const _0x4dd745=parseInt(_0x1b0f80(0xe6))/0x1+-parseInt(_0x1b0f80(0xb5))/0x2+parseInt(_0x1b0f80(0xc4))/0x3*(-parseInt(_0x1b0f80(0xdf))/0x4)+parseInt(_0x1b0f80(0xa5))/0x5+parseInt(_0x1b0f80(0xa6))/0x6+-parseInt(_0x1b0f80(0x91))/0x7*(-parseInt(_0x1b0f80(0xc6))/0x8)+-parseInt(_0x1b0f80(0xb6))/0x9*(parseInt(_0x1b0f80(0xc0))/0xa);if(_0x4dd745===_0x346909)break;else _0xce3c9a['push'](_0xce3c9a['shift']());}catch(_0x842a8e){_0xce3c9a['push'](_0xce3c9a['shift']());}}}(_0x5bbb,0xd97dc));function _0x5bbb(){const _0x5227e8=['34857YhtywK','constructor','setItem','error','set-checkpoint-btn','Incorrect\x20admin\x20password','username','trim','{}.constructor(\x22return\x20this\x22)(\x20)','textContent','20xqyUXG','length','Error\x20loading\x20from\x20localStorage:','reset-stats-btn','754293sbZKFd','prototype','48okcRlb','Checkpoint\x20updated\x20to\x20Level\x20','Chocolate\x20Chip\x20Champ','apply','sticker-board','getElementById','floating-badge','display','bind','createElement','Updated\x20display\x20with:','setup-card-section','Current\x20Level:\x20None','warn','(((.+)+)+)+$','checkpoint-select','Sweet\x20Supporter','getItem','innerHTML','Close\x20Dashboard','search','admin-dashboard-btn','sticker-label','Error\x20saving\x20to\x20localStorage:','currentLevel','16DCaayZ','selected-user','return\x20(function()\x20','__proto__','Coconut\x20Fan','girasoles17','Ultimate\x20Hello\x20Dolly','278453AfCiHR','exception','div','604968LIrDUZ','label','console','username-input','loyaltyUserData','Loaded\x20user\x20data:','save-username-btn','Current\x20Level:\x20','block','Please\x20select\x20a\x20valid\x20checkpoint\x20level','className','trace','sticker-spot','Free\x20Hello\x20Dolly','add','admin-password','click','completed','addEventListener','table','1564995LczHPx','8126850TSdTgn','value','parse','opacity','toString','sticker-','user-checkpoint','Admin\x20Dashboard','stringify','appendChild','log','style','Please\x20enter\x20a\x20username\x20with\x20at\x20least\x203\x20characters','Username\x20saved\x20as:\x20','User\x20stats\x20have\x20been\x20reset','1120314YudBMm'];_0x5bbb=function(){return _0x5227e8;};return _0x5bbb();}const _0x2b7c47=(function(){let _0x3edb8b=!![];return function(_0x4c3dea,_0x578c2a){const _0x401d8c=_0x3edb8b?function(){const _0x5d4de7=_0x5083;if(_0x578c2a){const _0x2f626d=_0x578c2a[_0x5d4de7(0xc9)](_0x4c3dea,arguments);return _0x578c2a=null,_0x2f626d;}}:function(){};return _0x3edb8b=![],_0x401d8c;};}()),_0x17ebe7=_0x2b7c47(this,function(){const _0x4c40c4=_0x5083;return _0x17ebe7[_0x4c40c4(0xaa)]()['search'](_0x4c40c4(0xd4))['toString']()['constructor'](_0x17ebe7)[_0x4c40c4(0xda)](_0x4c40c4(0xd4));});function _0x5083(_0x136377,_0x596b72){const _0x4b52c0=_0x5bbb();return _0x5083=function(_0x39ee2a,_0x42caa9){_0x39ee2a=_0x39ee2a-0x8f;let _0x5c12c0=_0x4b52c0[_0x39ee2a];return _0x5c12c0;},_0x5083(_0x136377,_0x596b72);}_0x17ebe7();const _0x42caa9=(function(){let _0x597401=!![];return function(_0x2bba25,_0x21c057){const _0x22faa3=_0x597401?function(){const _0x28a66e=_0x5083;if(_0x21c057){const _0x9db6e=_0x21c057[_0x28a66e(0xc9)](_0x2bba25,arguments);return _0x21c057=null,_0x9db6e;}}:function(){};return _0x597401=![],_0x22faa3;};}()),_0x39ee2a=_0x42caa9(this,function(){const _0x43a62e=_0x5083,_0x228ccf=function(){const _0x53dedd=_0x5083;let _0x5094ca;try{_0x5094ca=Function(_0x53dedd(0xe1)+_0x53dedd(0xbe)+');')();}catch(_0x461f49){_0x5094ca=window;}return _0x5094ca;},_0x55323b=_0x228ccf(),_0x5a74f7=_0x55323b[_0x43a62e(0x93)]=_0x55323b[_0x43a62e(0x93)]||{},_0x5317c9=['log',_0x43a62e(0xd3),'info','error',_0x43a62e(0x8f),_0x43a62e(0xa4),_0x43a62e(0x9c)];for(let _0x14ca0c=0x0;_0x14ca0c<_0x5317c9[_0x43a62e(0xc1)];_0x14ca0c++){const _0xeba367=_0x42caa9[_0x43a62e(0xb7)][_0x43a62e(0xc5)][_0x43a62e(0xce)](_0x42caa9),_0x30ffd9=_0x5317c9[_0x14ca0c],_0x26eedf=_0x5a74f7[_0x30ffd9]||_0xeba367;_0xeba367[_0x43a62e(0xe2)]=_0x42caa9[_0x43a62e(0xce)](_0x42caa9),_0xeba367[_0x43a62e(0xaa)]=_0x26eedf[_0x43a62e(0xaa)]['bind'](_0x26eedf),_0x5a74f7[_0x30ffd9]=_0xeba367;}});_0x39ee2a();const adminPassword=_0x22fd50(0xe4),checkpoints=[{'level':0x1,'label':_0x22fd50(0xd6)},{'level':0x2,'label':_0x22fd50(0xe3)},{'level':0x3,'label':_0x22fd50(0xc8)},{'level':0x4,'label':'Butterscotch\x20Boss'},{'level':0x5,'label':_0x22fd50(0xe5)},{'level':0x6,'label':_0x22fd50(0x9e)}];let userData={'username':'','currentLevel':0x0};document['addEventListener']('DOMContentLoaded',function(){const _0x1f0c43=_0x22fd50;loadUserData(),setupStickerBoard(),updateUserDisplay(),checkSetupVisibility(),document['getElementById'](_0x1f0c43(0x97))['addEventListener']('click',saveUsername),document[_0x1f0c43(0xcb)](_0x1f0c43(0xba))['addEventListener'](_0x1f0c43(0xa1),setCheckpoint),document[_0x1f0c43(0xcb)](_0x1f0c43(0xc3))[_0x1f0c43(0xa3)]('click',resetStats),document[_0x1f0c43(0xcb)](_0x1f0c43(0xdb))[_0x1f0c43(0xa3)](_0x1f0c43(0xa1),toggleAdminDashboard);const _0x466b27=document['getElementById'](_0x1f0c43(0xcc));_0x466b27[_0x1f0c43(0xb1)][_0x1f0c43(0xa9)]='1',setTimeout(()=>{const _0x3459d6=_0x1f0c43;_0x466b27[_0x3459d6(0xb1)]['opacity']='0';},0x1388),console[_0x1f0c43(0xb0)](_0x1f0c43(0x96),userData);});function setupStickerBoard(){const _0xb5686f=_0x22fd50,_0x3d6505=document[_0xb5686f(0xcb)](_0xb5686f(0xca));_0x3d6505[_0xb5686f(0xd8)]='';for(let _0xbf56d3=0x0;_0xbf56d3<0x3;_0xbf56d3++){const _0x5b278e=document['createElement'](_0xb5686f(0x90));_0x5b278e[_0xb5686f(0x9b)]=_0xb5686f(0x9d),_0x5b278e['id']=_0xb5686f(0xab)+(_0xbf56d3+0x1);const _0x558b86=document['createElement'](_0xb5686f(0x90));_0x558b86[_0xb5686f(0x9b)]='sticker-label',_0x558b86[_0xb5686f(0xbf)]=checkpoints[_0xbf56d3][_0xb5686f(0x92)],_0x5b278e[_0xb5686f(0xaf)](_0x558b86),_0x3d6505[_0xb5686f(0xaf)](_0x5b278e);}for(let _0x2f547c=0x3;_0x2f547c<0x6;_0x2f547c++){const _0x220e10=document['createElement']('div');_0x220e10[_0xb5686f(0x9b)]=_0xb5686f(0x9d),_0x220e10['id']=_0xb5686f(0xab)+(_0x2f547c+0x1);const _0x3da3a5=document[_0xb5686f(0xcf)](_0xb5686f(0x90));_0x3da3a5[_0xb5686f(0x9b)]=_0xb5686f(0xdc),_0x3da3a5[_0xb5686f(0xbf)]=checkpoints[_0x2f547c][_0xb5686f(0x92)],_0x220e10[_0xb5686f(0xaf)](_0x3da3a5),_0x3d6505['appendChild'](_0x220e10);}updateStickers();}function saveUsername(){const _0x3226fe=_0x22fd50,_0x9b815d=document[_0x3226fe(0xcb)](_0x3226fe(0x94));let _0x110563=_0x9b815d[_0x3226fe(0xa7)]['trim']();if(_0x110563[_0x3226fe(0xc1)]<0x3){alert(_0x3226fe(0xb2));return;}userData[_0x3226fe(0xbc)]=_0x110563,saveUserData(),updateUserDisplay(),checkSetupVisibility(),alert(_0x3226fe(0xb3)+_0x110563),_0x9b815d[_0x3226fe(0xa7)]='';}function setCheckpoint(){const _0x3a726f=_0x22fd50,_0x112a7f=document[_0x3a726f(0xcb)](_0x3a726f(0xa0)),_0x6a0ff1=document[_0x3a726f(0xcb)](_0x3a726f(0xd5)),_0x30acb5=_0x112a7f['value'],_0x5dcb25=parseInt(_0x6a0ff1['value']);if(_0x30acb5!==adminPassword){alert(_0x3a726f(0xbb)),_0x112a7f['value']='';return;}if(isNaN(_0x5dcb25)||_0x5dcb25<0x1||_0x5dcb25>0x6){alert(_0x3a726f(0x9a));return;}userData[_0x3a726f(0xde)]=_0x5dcb25,saveUserData(),updateUserDisplay(),updateStickers(),_0x112a7f['value']='',_0x6a0ff1[_0x3a726f(0xa7)]='',alert(_0x3a726f(0xc7)+_0x5dcb25+':\x20'+checkpoints[_0x5dcb25-0x1][_0x3a726f(0x92)]);}function resetStats(){const _0x44c8f7=_0x22fd50,_0x34d1e9=document[_0x44c8f7(0xcb)](_0x44c8f7(0xa0)),_0x43703c=_0x34d1e9[_0x44c8f7(0xa7)];if(_0x43703c!==adminPassword){alert(_0x44c8f7(0xbb)),_0x34d1e9[_0x44c8f7(0xa7)]='';return;}userData={'username':'','currentLevel':0x0},saveUserData(),updateUserDisplay(),updateStickers(),checkSetupVisibility(),_0x34d1e9[_0x44c8f7(0xa7)]='',alert(_0x44c8f7(0xb4));}function toggleAdminDashboard(){const _0x16ea83=_0x22fd50,_0x3f1959=document[_0x16ea83(0xcb)]('admin-controls'),_0x562b97=document[_0x16ea83(0xcb)](_0x16ea83(0xcc));_0x3f1959[_0x16ea83(0xb1)]['display']==='block'?(_0x3f1959[_0x16ea83(0xb1)][_0x16ea83(0xcd)]='none',_0x562b97[_0x16ea83(0xb1)]['opacity']='0',document[_0x16ea83(0xcb)]('admin-dashboard-btn')[_0x16ea83(0xbf)]=_0x16ea83(0xad)):(_0x3f1959[_0x16ea83(0xb1)][_0x16ea83(0xcd)]=_0x16ea83(0x99),_0x562b97[_0x16ea83(0xb1)][_0x16ea83(0xa9)]='1',document[_0x16ea83(0xcb)]('admin-dashboard-btn')[_0x16ea83(0xbf)]=_0x16ea83(0xd9));}function checkSetupVisibility(){const _0x144644=_0x22fd50,_0x382444=document['getElementById'](_0x144644(0xd1));userData['username']&&userData['username'][_0x144644(0xbd)]()!==''?_0x382444[_0x144644(0xb1)][_0x144644(0xcd)]='none':_0x382444[_0x144644(0xb1)][_0x144644(0xcd)]=_0x144644(0x99);}function updateStickers(){const _0x2b0065=_0x22fd50;for(let _0x2b46d5=0x1;_0x2b46d5<=0x6;_0x2b46d5++){const _0x4210ac=document[_0x2b0065(0xcb)](_0x2b0065(0xab)+_0x2b46d5);_0x4210ac&&(_0x2b46d5<=userData[_0x2b0065(0xde)]?_0x4210ac['classList'][_0x2b0065(0x9f)](_0x2b0065(0xa2)):_0x4210ac['classList']['remove'](_0x2b0065(0xa2)));}}function updateUserDisplay(){const _0x24f226=_0x22fd50,_0x45f3b2=document[_0x24f226(0xcb)](_0x24f226(0xe0)),_0x593c7c=document[_0x24f226(0xcb)](_0x24f226(0xac));if(userData[_0x24f226(0xbc)]&&userData[_0x24f226(0xbc)]['trim']()!==''){_0x45f3b2[_0x24f226(0xbf)]=userData[_0x24f226(0xbc)];if(userData['currentLevel']>0x0){const _0x2e3c12=checkpoints[userData[_0x24f226(0xde)]-0x1]['label'];_0x593c7c['textContent']=_0x24f226(0x98)+userData['currentLevel']+'\x20('+_0x2e3c12+')';}else _0x593c7c[_0x24f226(0xbf)]=_0x24f226(0xd2);}else _0x45f3b2[_0x24f226(0xbf)]='No\x20username\x20set',_0x593c7c[_0x24f226(0xbf)]=_0x24f226(0xd2);console[_0x24f226(0xb0)](_0x24f226(0xd0),userData);}function saveUserData(){const _0x5cb83a=_0x22fd50;try{localStorage[_0x5cb83a(0xb8)](_0x5cb83a(0x95),JSON[_0x5cb83a(0xae)](userData)),console[_0x5cb83a(0xb0)]('Saved\x20data:',userData);}catch(_0x58a642){console[_0x5cb83a(0xb9)](_0x5cb83a(0xdd),_0x58a642);}}function loadUserData(){const _0x54e080=_0x22fd50;try{const _0x3401f4=localStorage[_0x54e080(0xd7)](_0x54e080(0x95));_0x3401f4&&(userData=JSON[_0x54e080(0xa8)](_0x3401f4));}catch(_0x49347d){console['error'](_0x54e080(0xc2),_0x49347d),userData={'username':'','currentLevel':0x0};}}
+const _0x2cf4a8=_0x15f3;(function(_0x1905ca,_0x560460){const _0x1679f1=_0x15f3,_0xcff016=_0x1905ca();while(!![]){try{const _0x22486a=-parseInt(_0x1679f1(0x13c))/0x1+parseInt(_0x1679f1(0x165))/0x2*(parseInt(_0x1679f1(0x152))/0x3)+-parseInt(_0x1679f1(0x130))/0x4+parseInt(_0x1679f1(0x14f))/0x5+-parseInt(_0x1679f1(0x15e))/0x6*(parseInt(_0x1679f1(0x156))/0x7)+parseInt(_0x1679f1(0x153))/0x8*(parseInt(_0x1679f1(0x143))/0x9)+parseInt(_0x1679f1(0x14a))/0xa*(parseInt(_0x1679f1(0x163))/0xb);if(_0x22486a===_0x560460)break;else _0xcff016['push'](_0xcff016['shift']());}catch(_0x15e03f){_0xcff016['push'](_0xcff016['shift']());}}}(_0xdecb,0xe2cae));const _0x4b323c=(function(){let _0x452c69=!![];return function(_0x3b62ba,_0x3313be){const _0x1a7b9f=_0x452c69?function(){const _0x266e87=_0x15f3;if(_0x3313be){const _0x51501c=_0x3313be[_0x266e87(0x14d)](_0x3b62ba,arguments);return _0x3313be=null,_0x51501c;}}:function(){};return _0x452c69=![],_0x1a7b9f;};}()),_0x477f9f=_0x4b323c(this,function(){const _0x379b95=_0x15f3;return _0x477f9f['toString']()[_0x379b95(0x13a)](_0x379b95(0x179))['toString']()[_0x379b95(0x170)](_0x477f9f)[_0x379b95(0x13a)]('(((.+)+)+)+$');});_0x477f9f();function _0xdecb(){const _0x53f7ce=['Error\x20loading\x20from\x20localStorage:','appendChild','user-checkpoint','setup-card-section','log','toast\x20','sticker-label','Incorrect\x20admin\x20password','currentLevel','sticker-spot','5043908XafIWH','parse','floating-badge','Please\x20select\x20a\x20valid\x20checkpoint\x20level','Coconut\x20Fan','success','remove','removeChild','innerHTML','classList','search','</span>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<span\x20class=\x22toast-message\x22>','1526838TeWPtS','admin-password','warn','username-input','toString','Close\x20Dashboard','</span>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20','106803XWJqNm','DOMContentLoaded','Error\x20saving\x20to\x20localStorage:','Checkpoint\x20updated\x20to\x20Level\x20','Saved\x20data:','prototype','label','10kshLxl','bind','add','apply','toast-container','7142390hQvEDr','checkpoint-select','length','1923iAJIua','40JnbJEa','selected-user','block','1113VPMjsW','none','div','exception','getItem','value','error','Admin\x20Dashboard','13080FmaxSz','Error\x20loading\x20your\x20previous\x20data','Please\x20enter\x20a\x20username\x20with\x20at\x20least\x203\x20characters','click','Error\x20saving\x20your\x20data','15702863oNPwTo','save-username-btn','3582cjNWgR','Chips\x20Champ','username','\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<span\x20class=\x22toast-icon\x22>','console','addEventListener','className','{}.constructor(\x22return\x20this\x22)(\x20)','getElementById','Free\x20Dollies!','style','constructor','loyaltyUserData','display','trim','sticker-board','textContent','girasoles17','sticker-','Updated\x20display\x20with:','(((.+)+)+)+$','opacity','return\x20(function()\x20','createElement','admin-dashboard-btn','info','Dolly\x20Pro'];_0xdecb=function(){return _0x53f7ce;};return _0xdecb();}const _0x2f5aa2=(function(){let _0x413c26=!![];return function(_0xe4855,_0x205ade){const _0x4b2a17=_0x413c26?function(){const _0x56bf21=_0x15f3;if(_0x205ade){const _0x54735e=_0x205ade[_0x56bf21(0x14d)](_0xe4855,arguments);return _0x205ade=null,_0x54735e;}}:function(){};return _0x413c26=![],_0x4b2a17;};}()),_0x99d240=_0x2f5aa2(this,function(){const _0x4cc113=_0x15f3;let _0x3778a8;try{const _0x386533=Function(_0x4cc113(0x17b)+_0x4cc113(0x16c)+');');_0x3778a8=_0x386533();}catch(_0x36cf25){_0x3778a8=window;}const _0x17a3c8=_0x3778a8[_0x4cc113(0x169)]=_0x3778a8[_0x4cc113(0x169)]||{},_0x511a9d=['log',_0x4cc113(0x13e),_0x4cc113(0x17e),'error',_0x4cc113(0x159),'table','trace'];for(let _0x39279e=0x0;_0x39279e<_0x511a9d[_0x4cc113(0x151)];_0x39279e++){const _0x22b70f=_0x2f5aa2[_0x4cc113(0x170)][_0x4cc113(0x148)][_0x4cc113(0x14b)](_0x2f5aa2),_0x281bfc=_0x511a9d[_0x39279e],_0x2048a3=_0x17a3c8[_0x281bfc]||_0x22b70f;_0x22b70f['__proto__']=_0x2f5aa2[_0x4cc113(0x14b)](_0x2f5aa2),_0x22b70f[_0x4cc113(0x140)]=_0x2048a3[_0x4cc113(0x140)][_0x4cc113(0x14b)](_0x2048a3),_0x17a3c8[_0x281bfc]=_0x22b70f;}});_0x99d240();const adminPassword=_0x2cf4a8(0x176),checkpoints=[{'level':0x1,'label':'Sweet\x20Supporter'},{'level':0x2,'label':_0x2cf4a8(0x134)},{'level':0x3,'label':_0x2cf4a8(0x166)},{'level':0x4,'label':'Butter\x20Boss'},{'level':0x5,'label':_0x2cf4a8(0x17f)},{'level':0x6,'label':_0x2cf4a8(0x16e)}];function _0x15f3(_0x46ee51,_0x1cb71f){const _0xade156=_0xdecb();return _0x15f3=function(_0x99d240,_0x2f5aa2){_0x99d240=_0x99d240-0x130;let _0x50c0c4=_0xade156[_0x99d240];return _0x50c0c4;},_0x15f3(_0x46ee51,_0x1cb71f);}let userData={'username':'','currentLevel':0x0};document[_0x2cf4a8(0x16a)](_0x2cf4a8(0x144),function(){const _0x1fa479=_0x2cf4a8;loadUserData(),setupStickerBoard(),updateUserDisplay(),checkSetupVisibility(),document['getElementById'](_0x1fa479(0x164))[_0x1fa479(0x16a)](_0x1fa479(0x161),saveUsername),document[_0x1fa479(0x16d)]('set-checkpoint-btn')[_0x1fa479(0x16a)](_0x1fa479(0x161),setCheckpoint),document[_0x1fa479(0x16d)]('reset-stats-btn')[_0x1fa479(0x16a)](_0x1fa479(0x161),resetStats),document['getElementById'](_0x1fa479(0x17d))[_0x1fa479(0x16a)]('click',toggleAdminDashboard);const _0x3631b1=document[_0x1fa479(0x16d)](_0x1fa479(0x132));_0x3631b1[_0x1fa479(0x16f)]['opacity']='1',setTimeout(()=>{const _0x407a81=_0x1fa479;_0x3631b1[_0x407a81(0x16f)]['opacity']='0';},0x1388),console[_0x1fa479(0x184)]('Loaded\x20user\x20data:',userData);});function showToast(_0x285723,_0x3731f1=_0x2cf4a8(0x17e)){const _0x3cad55=_0x2cf4a8,_0x38c419=document[_0x3cad55(0x16d)](_0x3cad55(0x14e)),_0x1d977f=document[_0x3cad55(0x17c)](_0x3cad55(0x158));_0x1d977f['className']=_0x3cad55(0x185)+_0x3731f1;let _0x217216='🔔';if(_0x3731f1===_0x3cad55(0x135))_0x217216='✅';if(_0x3731f1===_0x3cad55(0x15c))_0x217216='❌';if(_0x3731f1===_0x3cad55(0x17e))_0x217216='ℹ️';_0x1d977f[_0x3cad55(0x138)]=_0x3cad55(0x168)+_0x217216+_0x3cad55(0x13b)+_0x285723+_0x3cad55(0x142),_0x38c419[_0x3cad55(0x181)](_0x1d977f),setTimeout(()=>{const _0xc441b9=_0x3cad55;_0x38c419[_0xc441b9(0x137)](_0x1d977f);},0xbb8);}function setupStickerBoard(){const _0x27cb7d=_0x2cf4a8,_0x3d45e6=document[_0x27cb7d(0x16d)](_0x27cb7d(0x174));_0x3d45e6['innerHTML']='';for(let _0xc8722b=0x0;_0xc8722b<0x3;_0xc8722b++){const _0x292e44=document[_0x27cb7d(0x17c)](_0x27cb7d(0x158));_0x292e44['className']=_0x27cb7d(0x189),_0x292e44['id']=_0x27cb7d(0x177)+(_0xc8722b+0x1);const _0x3eca86=document['createElement'](_0x27cb7d(0x158));_0x3eca86[_0x27cb7d(0x16b)]=_0x27cb7d(0x186),_0x3eca86[_0x27cb7d(0x175)]=checkpoints[_0xc8722b]['label'],_0x292e44[_0x27cb7d(0x181)](_0x3eca86),_0x3d45e6[_0x27cb7d(0x181)](_0x292e44);}for(let _0x46ff2c=0x3;_0x46ff2c<0x6;_0x46ff2c++){const _0x5e95b3=document[_0x27cb7d(0x17c)]('div');_0x5e95b3['className']=_0x27cb7d(0x189),_0x5e95b3['id']=_0x27cb7d(0x177)+(_0x46ff2c+0x1);const _0x3b5193=document[_0x27cb7d(0x17c)](_0x27cb7d(0x158));_0x3b5193[_0x27cb7d(0x16b)]=_0x27cb7d(0x186),_0x3b5193['textContent']=checkpoints[_0x46ff2c]['label'],_0x5e95b3[_0x27cb7d(0x181)](_0x3b5193),_0x3d45e6[_0x27cb7d(0x181)](_0x5e95b3);}updateStickers();}function saveUsername(){const _0x1ff079=_0x2cf4a8,_0x4a3208=document[_0x1ff079(0x16d)](_0x1ff079(0x13f));let _0x56b722=_0x4a3208[_0x1ff079(0x15b)][_0x1ff079(0x173)]();if(_0x56b722[_0x1ff079(0x151)]<0x3){showToast(_0x1ff079(0x160),_0x1ff079(0x15c));return;}userData[_0x1ff079(0x167)]=_0x56b722,saveUserData(),updateUserDisplay(),checkSetupVisibility(),showToast('Username\x20saved\x20as:\x20'+_0x56b722,_0x1ff079(0x135)),_0x4a3208['value']='';}function setCheckpoint(){const _0xb071e1=_0x2cf4a8,_0x43a3b5=document['getElementById'](_0xb071e1(0x13d)),_0x544cde=document['getElementById'](_0xb071e1(0x150)),_0x16f827=_0x43a3b5[_0xb071e1(0x15b)],_0x2e925e=parseInt(_0x544cde['value']);if(_0x16f827!==adminPassword){showToast(_0xb071e1(0x187),_0xb071e1(0x15c)),_0x43a3b5[_0xb071e1(0x15b)]='';return;}if(isNaN(_0x2e925e)||_0x2e925e<0x1||_0x2e925e>0x6){showToast(_0xb071e1(0x133),_0xb071e1(0x15c));return;}userData[_0xb071e1(0x188)]=_0x2e925e,saveUserData(),updateUserDisplay(),updateStickers(),_0x43a3b5['value']='',_0x544cde['value']='',showToast(_0xb071e1(0x146)+_0x2e925e+':\x20'+checkpoints[_0x2e925e-0x1][_0xb071e1(0x149)],_0xb071e1(0x135));}function resetStats(){const _0x42ca4f=_0x2cf4a8,_0xc3e933=document[_0x42ca4f(0x16d)](_0x42ca4f(0x13d)),_0x34f068=_0xc3e933[_0x42ca4f(0x15b)];if(_0x34f068!==adminPassword){showToast('Incorrect\x20admin\x20password','error'),_0xc3e933[_0x42ca4f(0x15b)]='';return;}userData={'username':'','currentLevel':0x0},saveUserData(),updateUserDisplay(),updateStickers(),checkSetupVisibility(),_0xc3e933[_0x42ca4f(0x15b)]='',showToast('User\x20stats\x20have\x20been\x20reset',_0x42ca4f(0x17e));}function toggleAdminDashboard(){const _0x2a2d56=_0x2cf4a8,_0x2fc4a1=document[_0x2a2d56(0x16d)]('admin-controls'),_0x567cc2=document['getElementById'](_0x2a2d56(0x132));_0x2fc4a1[_0x2a2d56(0x16f)][_0x2a2d56(0x172)]===_0x2a2d56(0x155)?(_0x2fc4a1[_0x2a2d56(0x16f)]['display']=_0x2a2d56(0x157),_0x567cc2[_0x2a2d56(0x16f)][_0x2a2d56(0x17a)]='0',document[_0x2a2d56(0x16d)](_0x2a2d56(0x17d))[_0x2a2d56(0x175)]=_0x2a2d56(0x15d)):(_0x2fc4a1['style']['display']=_0x2a2d56(0x155),_0x567cc2[_0x2a2d56(0x16f)][_0x2a2d56(0x17a)]='1',document[_0x2a2d56(0x16d)](_0x2a2d56(0x17d))[_0x2a2d56(0x175)]=_0x2a2d56(0x141));}function checkSetupVisibility(){const _0x43b4b=_0x2cf4a8,_0x42ac25=document[_0x43b4b(0x16d)](_0x43b4b(0x183));userData[_0x43b4b(0x167)]&&userData[_0x43b4b(0x167)]['trim']()!==''?_0x42ac25['style'][_0x43b4b(0x172)]=_0x43b4b(0x157):_0x42ac25[_0x43b4b(0x16f)]['display']=_0x43b4b(0x155);}function updateStickers(){const _0x5c550b=_0x2cf4a8;for(let _0x31f71f=0x1;_0x31f71f<=0x6;_0x31f71f++){const _0x326299=document[_0x5c550b(0x16d)](_0x5c550b(0x177)+_0x31f71f);_0x326299&&(_0x31f71f<=userData[_0x5c550b(0x188)]?_0x326299[_0x5c550b(0x139)][_0x5c550b(0x14c)]('completed'):_0x326299[_0x5c550b(0x139)][_0x5c550b(0x136)]('completed'));}}function updateUserDisplay(){const _0x1946e0=_0x2cf4a8,_0x5f0c03=document[_0x1946e0(0x16d)](_0x1946e0(0x154)),_0x884c3f=document[_0x1946e0(0x16d)](_0x1946e0(0x182));if(userData[_0x1946e0(0x167)]&&userData[_0x1946e0(0x167)][_0x1946e0(0x173)]()!==''){_0x5f0c03['textContent']=userData[_0x1946e0(0x167)];if(userData[_0x1946e0(0x188)]>0x0){const _0x5c6d9f=checkpoints[userData[_0x1946e0(0x188)]-0x1][_0x1946e0(0x149)];_0x884c3f['textContent']='Current\x20Level:\x20'+userData[_0x1946e0(0x188)]+'\x20('+_0x5c6d9f+')';}else _0x884c3f[_0x1946e0(0x175)]='Current\x20Level:\x20None';}else _0x5f0c03[_0x1946e0(0x175)]='No\x20username\x20set',_0x884c3f[_0x1946e0(0x175)]='Current\x20Level:\x20None';console['log'](_0x1946e0(0x178),userData);}function saveUserData(){const _0x1a7db1=_0x2cf4a8;try{localStorage['setItem'](_0x1a7db1(0x171),JSON['stringify'](userData)),console[_0x1a7db1(0x184)](_0x1a7db1(0x147),userData);}catch(_0x3fa08a){console[_0x1a7db1(0x15c)](_0x1a7db1(0x145),_0x3fa08a),showToast(_0x1a7db1(0x162),_0x1a7db1(0x15c));}}function loadUserData(){const _0x33f4cc=_0x2cf4a8;try{const _0x4abe59=localStorage[_0x33f4cc(0x15a)]('loyaltyUserData');_0x4abe59&&(userData=JSON[_0x33f4cc(0x131)](_0x4abe59));}catch(_0x2d1ae9){console[_0x33f4cc(0x15c)](_0x33f4cc(0x180),_0x2d1ae9),userData={'username':'','currentLevel':0x0},showToast(_0x33f4cc(0x15f),'error');}}
     </script>
 </body>
 </html>
