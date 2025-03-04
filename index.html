@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="img/casey/favicon.png" type="image/png">
+    <title>Casey's Home Bakery</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Roboto Mono', monospace;
+        }
+        body {
+            background: #ac0201;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+        .container {
+            width: 100%;
+            max-width: 400px;
+        }
+        .loyalty-card {
+            background: white;
+            color: #ac0201;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+        .card-header {
+            padding: 20px;
+            text-align: center;
+            position: relative;
+            border-bottom: 2px solid #ac0201;
+        }
+        .card-header img {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 15px;
+        }
+        .card-header h1 {
+            font-size: 28px;
+            margin-bottom: 10px;
+            color: #ac0201;
+            font-weight: 700;
+        }
+        .card-header p {
+            font-size: 16px;
+            color: #ac0201;
+        }
+        .controls {
+            padding: 20px;
+        }
+        .link-button {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ac0201;
+            border-radius: 4px;
+            background: #ac0201;
+            color: white;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .link-button:hover {
+            background: #d03030;
+            transform: translateY(-2px);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="loyalty-card">
+            <div class="card-header">
+                <img src="img/casey/favicon.png" alt="Casey's Home Bakery Logo">
+                <h1>Casey's Home Bakery</h1>
+                <p>Delicious Homemade Treats</p>
+            </div>
+            <div class="controls">
+                <button class="link-button" onclick="openLink('https://caseybakery.shop/loyalty')">Loyalty Stamps</button>
+                <button class="link-button" onclick="openLink('caseys.homebakes')">Instagram</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function openLink(url) {
+            window.open(url, '_blank');
+        }
+    </script>
+</body>
+</html>
