@@ -1,1 +1,304 @@
-function _0x3aa1(_0x2dea6e,_0x194831){const _0x50d089=_0x58fb();return _0x3aa1=function(_0x4903ef,_0x214a63){_0x4903ef=_0x4903ef-0x13e;let _0xbc006f=_0x50d089[_0x4903ef];return _0xbc006f;},_0x3aa1(_0x2dea6e,_0x194831);}const _0xd84d12=_0x3aa1;(function(_0x17872e,_0x2700c0){const _0x44dab3=_0x3aa1,_0x36570=_0x17872e();while(!![]){try{const _0x5ad901=parseInt(_0x44dab3(0x148))/0x1*(parseInt(_0x44dab3(0x170))/0x2)+parseInt(_0x44dab3(0x19b))/0x3*(-parseInt(_0x44dab3(0x16a))/0x4)+-parseInt(_0x44dab3(0x17a))/0x5+parseInt(_0x44dab3(0x161))/0x6+-parseInt(_0x44dab3(0x192))/0x7*(-parseInt(_0x44dab3(0x187))/0x8)+-parseInt(_0x44dab3(0x172))/0x9*(-parseInt(_0x44dab3(0x166))/0xa)+-parseInt(_0x44dab3(0x193))/0xb;if(_0x5ad901===_0x2700c0)break;else _0x36570['push'](_0x36570['shift']());}catch(_0x31ecd4){_0x36570['push'](_0x36570['shift']());}}}(_0x58fb,0x783df));const _0xa9c469=(function(){let _0x22291c=!![];return function(_0xf6eb15,_0xa3c9b6){const _0x511c4f=_0x22291c?function(){if(_0xa3c9b6){const _0x325c17=_0xa3c9b6['apply'](_0xf6eb15,arguments);return _0xa3c9b6=null,_0x325c17;}}:function(){};return _0x22291c=![],_0x511c4f;};}()),_0x334be2=_0xa9c469(this,function(){const _0x351b1c=_0x3aa1;return _0x334be2[_0x351b1c(0x14e)]()[_0x351b1c(0x18c)](_0x351b1c(0x16b))[_0x351b1c(0x14e)]()['constructor'](_0x334be2)[_0x351b1c(0x18c)]('(((.+)+)+)+$');});_0x334be2();const _0x214a63=(function(){let _0x274565=!![];return function(_0x147490,_0x53d8f1){const _0x407c11=_0x274565?function(){if(_0x53d8f1){const _0x4308fb=_0x53d8f1['apply'](_0x147490,arguments);return _0x53d8f1=null,_0x4308fb;}}:function(){};return _0x274565=![],_0x407c11;};}()),_0x4903ef=_0x214a63(this,function(){const _0x535b51=_0x3aa1;let _0x70c757;try{const _0x26b9fb=Function(_0x535b51(0x160)+_0x535b51(0x151)+');');_0x70c757=_0x26b9fb();}catch(_0xda0afc){_0x70c757=window;}const _0x315a7d=_0x70c757['console']=_0x70c757[_0x535b51(0x185)]||{},_0x39b8c4=['log','warn',_0x535b51(0x17d),'error',_0x535b51(0x190),_0x535b51(0x16d),_0x535b51(0x174)];for(let _0x103841=0x0;_0x103841<_0x39b8c4[_0x535b51(0x157)];_0x103841++){const _0x30a98e=_0x214a63[_0x535b51(0x176)][_0x535b51(0x179)]['bind'](_0x214a63),_0x4ec24c=_0x39b8c4[_0x103841],_0x127c83=_0x315a7d[_0x4ec24c]||_0x30a98e;_0x30a98e[_0x535b51(0x19a)]=_0x214a63['bind'](_0x214a63),_0x30a98e[_0x535b51(0x14e)]=_0x127c83[_0x535b51(0x14e)][_0x535b51(0x155)](_0x127c83),_0x315a7d[_0x4ec24c]=_0x30a98e;}});_0x4903ef();let users=[],adminPassword='admin123';const checkpoints=[{'level':0x1,'points':0x64,'label':_0xd84d12(0x152)},{'level':0x2,'points':0xfa,'label':'Bronze'},{'level':0x3,'points':0x1f4,'label':_0xd84d12(0x164)},{'level':0x4,'points':0x2ee,'label':_0xd84d12(0x169)},{'level':0x5,'points':0x3e8,'label':_0xd84d12(0x153)},{'level':0x6,'points':0x5dc,'label':_0xd84d12(0x16e)}];document[_0xd84d12(0x14b)](_0xd84d12(0x156),function(){const _0x36c012=_0xd84d12;loadData(),setupCheckpoints(),updateUserSelect(),document[_0x36c012(0x177)]('add-user-btn')['addEventListener'](_0x36c012(0x195),addUser),document[_0x36c012(0x177)]('load-user-btn')[_0x36c012(0x14b)]('click',loadUserData),document[_0x36c012(0x177)](_0x36c012(0x194))[_0x36c012(0x14b)](_0x36c012(0x195),addPoints),document[_0x36c012(0x177)](_0x36c012(0x14a))[_0x36c012(0x14b)](_0x36c012(0x195),changePassword);});function setupCheckpoints(){const _0x34918e=_0xd84d12,_0x39c6c3=document[_0x34918e(0x177)]('checkpoints');_0x39c6c3[_0x34918e(0x182)]='';const _0x8dd06d=document[_0x34918e(0x15f)](_0x34918e(0x15d));_0x8dd06d[_0x34918e(0x18a)]=_0x34918e(0x184),_0x8dd06d['id']='progress-bar',_0x39c6c3[_0x34918e(0x147)](_0x8dd06d),checkpoints[_0x34918e(0x18b)](_0x1da629=>{const _0x13c3dc=_0x34918e,_0x14acac=document['createElement']('div');_0x14acac['className']=_0x13c3dc(0x171),_0x14acac['id']=_0x13c3dc(0x13f)+_0x1da629[_0x13c3dc(0x141)];const _0x2e840c=document[_0x13c3dc(0x15f)]('div');_0x2e840c[_0x13c3dc(0x18a)]='checkpoint-circle',_0x2e840c['textContent']=_0x1da629[_0x13c3dc(0x141)];const _0x11a10b=document[_0x13c3dc(0x15f)](_0x13c3dc(0x15d));_0x11a10b[_0x13c3dc(0x18a)]='checkpoint-label',_0x11a10b[_0x13c3dc(0x182)]=_0x1da629[_0x13c3dc(0x144)]+_0x13c3dc(0x189)+_0x1da629[_0x13c3dc(0x18e)]+_0x13c3dc(0x162),_0x14acac[_0x13c3dc(0x147)](_0x2e840c),_0x14acac[_0x13c3dc(0x147)](_0x11a10b),_0x39c6c3[_0x13c3dc(0x147)](_0x14acac);});}function _0x58fb(){const _0x2cb4af=['options','10OFvtQz','update-points','remove','Gold','42764fmSunG','(((.+)+)+)+$','loyaltyAdminPassword','table','Diamond','username-input','4cwDQwv','checkpoint','3447891NFWsvL','startsWith','trace','No\x20user\x20selected','constructor','getElementById','value','prototype','2342925tIDwMO','new-password','Incorrect\x20admin\x20password','info','Current\x20password\x20is\x20incorrect','Please\x20select\x20a\x20user\x20first','admin-password','\x20points','innerHTML','offsetWidth','progress-bar','console','Added\x20','56YGEUgS','user-select','<br>','className','forEach','search','add','points','findIndex','exception','width','412475AEoHlr','3090483GXHpnN','add-points-btn','click','Please\x20select\x20a\x20user','trim','setItem','querySelector','__proto__','132ZXYzvX','getItem','New\x20password\x20must\x20be\x20at\x20least\x206\x20characters','username','checkpoint-','loyaltyUsers','level','user-points','Please\x20enter\x20a\x20valid\x20username','label','Password\x20changed\x20successfully','push','appendChild','171562yurlKd','\x20with\x20','change-password-btn','addEventListener','min','Points:\x20','toString','\x20pts)','style','{}.constructor(\x22return\x20this\x22)(\x20)','Starter','Platinum','active','bind','DOMContentLoaded','length','parse','completed','textContent','option','classList','div','selected-user','createElement','return\x20(function()\x20','3442530xPmkMk','\x20pts','current-password','Silver'];_0x58fb=function(){return _0x2cb4af;};return _0x58fb();}function addUser(){const _0x182c01=_0xd84d12,_0x2cfc24=document[_0x182c01(0x177)](_0x182c01(0x16f)),_0x41e215=document['getElementById']('points-input');let _0x5c255b=_0x2cfc24['value'][_0x182c01(0x197)]();const _0x379b89=parseInt(_0x41e215[_0x182c01(0x178)])||0x0;!_0x5c255b[_0x182c01(0x173)]('@')&&(_0x5c255b='@'+_0x5c255b);if(_0x5c255b['length']<=0x1){alert(_0x182c01(0x143));return;}const _0x5ad955=users[_0x182c01(0x18f)](_0x1de33b=>_0x1de33b['username']===_0x5c255b);_0x5ad955>=0x0?(users[_0x5ad955][_0x182c01(0x18e)]=_0x379b89,alert('Updated\x20user\x20'+_0x5c255b+'\x20with\x20'+_0x379b89+_0x182c01(0x181))):(users[_0x182c01(0x146)]({'username':_0x5c255b,'points':_0x379b89}),alert('Added\x20new\x20user\x20'+_0x5c255b+_0x182c01(0x149)+_0x379b89+_0x182c01(0x181))),saveData(),updateUserSelect(),_0x2cfc24[_0x182c01(0x178)]='',_0x41e215['value']='';}function updateUserSelect(){const _0x5008d6=_0xd84d12,_0x21a442=document['getElementById'](_0x5008d6(0x188));while(_0x21a442[_0x5008d6(0x165)][_0x5008d6(0x157)]>0x1){_0x21a442[_0x5008d6(0x168)](0x1);}users[_0x5008d6(0x18b)](_0xa12d93=>{const _0x141e0f=_0x5008d6,_0x48fcd2=document[_0x141e0f(0x15f)](_0x141e0f(0x15b));_0x48fcd2[_0x141e0f(0x178)]=_0xa12d93[_0x141e0f(0x13e)],_0x48fcd2[_0x141e0f(0x15a)]=_0xa12d93[_0x141e0f(0x13e)]+'\x20('+_0xa12d93[_0x141e0f(0x18e)]+_0x141e0f(0x14f),_0x21a442[_0x141e0f(0x147)](_0x48fcd2);});}function loadUserData(){const _0x37dc77=_0xd84d12,_0xfa26c4=document['getElementById'](_0x37dc77(0x188)),_0x4de509=_0xfa26c4[_0x37dc77(0x178)];if(!_0x4de509){alert(_0x37dc77(0x196));return;}const _0x32251d=users['find'](_0x4ce114=>_0x4ce114[_0x37dc77(0x13e)]===_0x4de509);_0x32251d&&(document['getElementById']('selected-user')['textContent']=_0x32251d[_0x37dc77(0x13e)],document['getElementById'](_0x37dc77(0x142))[_0x37dc77(0x15a)]='Points:\x20'+_0x32251d[_0x37dc77(0x18e)],updateCheckpoints(_0x32251d['points']));}function addPoints(){const _0x425170=_0xd84d12,_0x50b8f7=document['getElementById'](_0x425170(0x15e)),_0x596703=document[_0x425170(0x177)](_0x425170(0x167)),_0x1aa27f=document[_0x425170(0x177)](_0x425170(0x180)),_0x46ba70=parseInt(_0x596703['value'])||0x0,_0x505b99=_0x1aa27f[_0x425170(0x178)];if(_0x505b99!==adminPassword){alert(_0x425170(0x17c)),_0x1aa27f[_0x425170(0x178)]='';return;}const _0x515771=_0x50b8f7[_0x425170(0x15a)];if(_0x515771===_0x425170(0x175)){alert(_0x425170(0x17f));return;}const _0x2813b0=users['findIndex'](_0x59bc79=>_0x59bc79[_0x425170(0x13e)]===_0x515771);_0x2813b0>=0x0&&(users[_0x2813b0][_0x425170(0x18e)]+=_0x46ba70,document['getElementById'](_0x425170(0x142))['textContent']=_0x425170(0x14d)+users[_0x2813b0][_0x425170(0x18e)],updateCheckpoints(users[_0x2813b0][_0x425170(0x18e)]),updateUserSelect(),saveData(),_0x596703[_0x425170(0x178)]='',_0x1aa27f['value']='',alert(_0x425170(0x186)+_0x46ba70+'\x20points\x20to\x20'+_0x515771));}function changePassword(){const _0xfeff72=_0xd84d12,_0x20b955=document[_0xfeff72(0x177)](_0xfeff72(0x163)),_0x371122=document[_0xfeff72(0x177)](_0xfeff72(0x17b)),_0x36e21f=_0x20b955[_0xfeff72(0x178)],_0x3c5690=_0x371122[_0xfeff72(0x178)];if(_0x36e21f!==adminPassword){alert(_0xfeff72(0x17e)),_0x20b955[_0xfeff72(0x178)]='';return;}if(_0x3c5690[_0xfeff72(0x157)]<0x6){alert(_0xfeff72(0x19d));return;}adminPassword=_0x3c5690,localStorage[_0xfeff72(0x198)](_0xfeff72(0x16c),adminPassword),_0x20b955[_0xfeff72(0x178)]='',_0x371122[_0xfeff72(0x178)]='',alert(_0xfeff72(0x145));}function updateCheckpoints(_0x15e629){const _0x4ddde3=_0xd84d12;checkpoints['forEach'](_0x974888=>{const _0x25ee89=_0x3aa1,_0xe16efb=document['getElementById']('checkpoint-'+_0x974888[_0x25ee89(0x141)]);_0xe16efb[_0x25ee89(0x15c)][_0x25ee89(0x168)](_0x25ee89(0x159),_0x25ee89(0x154));});let _0x202b3c=0x0,_0xa28ce6=0x0;for(let _0x4bc96d=0x0;_0x4bc96d<checkpoints['length'];_0x4bc96d++){const _0xc02261=checkpoints[_0x4bc96d],_0x4d6eac=document['getElementById'](_0x4ddde3(0x13f)+_0xc02261[_0x4ddde3(0x141)]);_0x15e629>=_0xc02261['points']&&(_0x4d6eac[_0x4ddde3(0x15c)][_0x4ddde3(0x18d)](_0x4ddde3(0x159)),_0x202b3c=_0x4bc96d+0x1,_0xa28ce6=_0xc02261[_0x4ddde3(0x18e)]);}if(_0x202b3c<checkpoints['length']){const _0x4f8c77=document[_0x4ddde3(0x177)](_0x4ddde3(0x13f)+checkpoints[_0x202b3c][_0x4ddde3(0x141)]);_0x4f8c77['classList'][_0x4ddde3(0x18d)](_0x4ddde3(0x154));}const _0x313141=document['getElementById'](_0x4ddde3(0x184)),_0x18a954=document[_0x4ddde3(0x199)]('.checkpoints')[_0x4ddde3(0x183)]-0x28;if(_0x202b3c===0x0){const _0x7ac53c=_0x15e629/checkpoints[0x0][_0x4ddde3(0x18e)],_0xa50ad3=Math[_0x4ddde3(0x14c)](_0x7ac53c*(_0x18a954/checkpoints[_0x4ddde3(0x157)]),_0x18a954/checkpoints['length']);_0x313141['style']['width']=_0xa50ad3+'px';}else{if(_0x202b3c<checkpoints['length']){const _0x1ba477=checkpoints[_0x202b3c-0x1][_0x4ddde3(0x18e)],_0x8da9b2=checkpoints[_0x202b3c][_0x4ddde3(0x18e)],_0x475f37=_0x202b3c/checkpoints[_0x4ddde3(0x157)]*_0x18a954,_0x49ac07=_0x18a954/checkpoints['length'],_0x4711cc=(_0x15e629-_0x1ba477)/(_0x8da9b2-_0x1ba477),_0x1ea92a=_0x49ac07*_0x4711cc;_0x313141[_0x4ddde3(0x150)][_0x4ddde3(0x191)]=_0x475f37+_0x1ea92a+'px';}else _0x313141[_0x4ddde3(0x150)][_0x4ddde3(0x191)]=_0x18a954+'px';}}function saveData(){const _0x540e21=_0xd84d12;localStorage[_0x540e21(0x198)](_0x540e21(0x140),JSON['stringify'](users));}function loadData(){const _0x491d91=_0xd84d12,_0x3d11be=localStorage[_0x491d91(0x19c)](_0x491d91(0x140));_0x3d11be&&(users=JSON[_0x491d91(0x158)](_0x3d11be));const _0xa0f941=localStorage['getItem'](_0x491d91(0x16c));_0xa0f941&&(adminPassword=_0xa0f941);}
+// Data structure to store users and their points
+let users = [];
+let adminPassword = "admin123";
+
+// Define the checkpoint thresholds
+const checkpoints = [
+    { level: 1, points: 100, label: "Friend" },
+    { level: 2, points: 250, label: "Bronze" },
+    { level: 3, points: 500, label: "Silver" },
+    { level: 4, points: 750, label: "Gold" },
+    { level: 5, points: 1000, label: "Platinum" },
+    { level: 6, points: 1500, label: "Diamond" }
+];
+
+// Initialize the system
+document.addEventListener('DOMContentLoaded', function() {
+    // Load data from localStorage if available
+    loadData();
+    
+    // Setup checkpoints
+    setupCheckpoints();
+    
+    // Update user dropdown
+    updateUserSelect();
+    
+    // Add event listeners
+    document.getElementById('add-user-btn').addEventListener('click', addUser);
+    document.getElementById('load-user-btn').addEventListener('click', loadUserData);
+    document.getElementById('add-points-btn').addEventListener('click', addPoints);
+    document.getElementById('change-password-btn').addEventListener('click', changePassword);
+});
+
+// Function to setup checkpoints
+function setupCheckpoints() {
+    const checkpointsContainer = document.getElementById('checkpoints');
+    checkpointsContainer.innerHTML = '';
+    
+    // Create progress bar
+    const progressBar = document.createElement('div');
+    progressBar.className = 'progress-bar';
+    progressBar.id = 'progress-bar';
+    checkpointsContainer.appendChild(progressBar);
+    
+    // Create checkpoints
+    checkpoints.forEach(checkpoint => {
+        const checkpointDiv = document.createElement('div');
+        checkpointDiv.className = 'checkpoint';
+        checkpointDiv.id = `checkpoint-${checkpoint.level}`;
+        
+        const circle = document.createElement('div');
+        circle.className = 'checkpoint-circle';
+        circle.textContent = checkpoint.level;
+        
+        const label = document.createElement('div');
+        label.className = 'checkpoint-label';
+        label.innerHTML = `${checkpoint.label}<br>${checkpoint.points} pts`;
+        
+        checkpointDiv.appendChild(circle);
+        checkpointDiv.appendChild(label);
+        checkpointsContainer.appendChild(checkpointDiv);
+    });
+}
+
+// Function to add a new user
+function addUser() {
+    const usernameInput = document.getElementById('username-input');
+    const pointsInput = document.getElementById('points-input');
+    
+    let username = usernameInput.value.trim();
+    const points = parseInt(pointsInput.value) || 0;
+    
+    // Ensure username starts with @
+    if (!username.startsWith('@')) {
+        username = '@' + username;
+    }
+    
+    // Validate input
+    if (username.length <= 1) {
+        alert('Please enter a valid username');
+        return;
+    }
+    
+    // Check if user already exists
+    const existingUserIndex = users.findIndex(user => user.username === username);
+    
+    if (existingUserIndex >= 0) {
+        // Update existing user
+        users[existingUserIndex].points = points;
+        alert(`Updated user ${username} with ${points} points`);
+    } else {
+        // Add new user
+        users.push({ username, points });
+        alert(`Added new user ${username} with ${points} points`);
+    }
+    
+    // Save data
+    saveData();
+    
+    // Update dropdown
+    updateUserSelect();
+    
+    // Clear inputs
+    usernameInput.value = '';
+    pointsInput.value = '';
+}
+
+// Function to update the user selection dropdown
+function updateUserSelect() {
+    const userSelect = document.getElementById('user-select');
+    
+    // Clear current options except the first
+    while (userSelect.options.length > 1) {
+        userSelect.remove(1);
+    }
+    
+    // Add users to dropdown
+    users.forEach(user => {
+        const option = document.createElement('option');
+        option.value = user.username;
+        option.textContent = `${user.username} (${user.points} pts)`;
+        userSelect.appendChild(option);
+    });
+}
+
+// Function to load a user's data
+function loadUserData() {
+    const userSelect = document.getElementById('user-select');
+    const selectedUsername = userSelect.value;
+    
+    if (!selectedUsername) {
+        alert('Please select a user');
+        return;
+    }
+    
+    const selectedUser = users.find(user => user.username === selectedUsername);
+    
+    if (selectedUser) {
+        // Update UI with user data
+        document.getElementById('selected-user').textContent = selectedUser.username;
+        document.getElementById('user-points').textContent = `Points: ${selectedUser.points}`;
+        
+        // Update checkpoints visualization
+        updateCheckpoints(selectedUser.points);
+    }
+}
+
+// Function to add points to the current user with password verification
+function addPoints() {
+    const userDisplay = document.getElementById('selected-user');
+    const pointsInput = document.getElementById('update-points');
+    const passwordInput = document.getElementById('admin-password');
+    const pointsToAdd = parseInt(pointsInput.value) || 0;
+    const password = passwordInput.value;
+    
+    // Verify password
+    if (password !== adminPassword) {
+        alert('Incorrect admin password');
+        passwordInput.value = '';
+        return;
+    }
+    
+    const selectedUsername = userDisplay.textContent;
+    
+    if (selectedUsername === 'No user selected') {
+        alert('Please select a user first');
+        return;
+    }
+    
+    // Find user
+    const userIndex = users.findIndex(user => user.username === selectedUsername);
+    
+    if (userIndex >= 0) {
+        // Add points
+        users[userIndex].points += pointsToAdd;
+        
+        // Update UI
+        document.getElementById('user-points').textContent = `Points: ${users[userIndex].points}`;
+        
+        // Update checkpoints visualization
+        updateCheckpoints(users[userIndex].points);
+        
+        // Update dropdown
+        updateUserSelect();
+        
+        // Save data
+        saveData();
+        
+        // Clear inputs
+        pointsInput.value = '';
+        passwordInput.value = '';
+        
+        alert(`Added ${pointsToAdd} points to ${selectedUsername}`);
+    }
+}
+
+// Function to change the admin password
+function changePassword() {
+    const currentPasswordInput = document.getElementById('current-password');
+    const newPasswordInput = document.getElementById('new-password');
+    
+    const currentPassword = currentPasswordInput.value;
+    const newPassword = newPasswordInput.value;
+    
+    // Verify current password
+    if (currentPassword !== adminPassword) {
+        alert('Current password is incorrect');
+        currentPasswordInput.value = '';
+        return;
+    }
+    
+    // Validate new password
+    if (newPassword.length < 6) {
+        alert('New password must be at least 6 characters');
+        return;
+    }
+    
+    // Update password
+    adminPassword = newPassword;
+    
+    // Save to localStorage
+    localStorage.setItem('loyaltyAdminPassword', adminPassword);
+    
+    // Clear inputs
+    currentPasswordInput.value = '';
+    newPasswordInput.value = '';
+    
+    alert('Password changed successfully');
+}
+
+// Function to update checkpoints based on current points
+function updateCheckpoints(currentPoints) {
+    // Reset all checkpoints
+    checkpoints.forEach(checkpoint => {
+        const checkpointElement = document.getElementById(`checkpoint-${checkpoint.level}`);
+        checkpointElement.classList.remove('completed', 'active');
+    });
+    
+    // Find the current active checkpoint
+    let activeCheckpoint = 0;
+    let completedPoints = 0;
+    
+    for (let i = 0; i < checkpoints.length; i++) {
+        const checkpoint = checkpoints[i];
+        const checkpointElement = document.getElementById(`checkpoint-${checkpoint.level}`);
+        
+        if (currentPoints >= checkpoint.points) {
+            checkpointElement.classList.add('completed');
+            activeCheckpoint = i + 1;
+            completedPoints = checkpoint.points;
+        }
+    }
+    
+    // Set the active checkpoint (next one to achieve)
+    if (activeCheckpoint < checkpoints.length) {
+        const nextCheckpoint = document.getElementById(`checkpoint-${checkpoints[activeCheckpoint].level}`);
+        nextCheckpoint.classList.add('active');
+    }
+    
+    // Update progress bar
+    const progressBar = document.getElementById('progress-bar');
+    const totalWidth = document.querySelector('.checkpoints').offsetWidth - 40; // Subtracting padding
+    
+    if (activeCheckpoint === 0) {
+        // No checkpoints completed yet
+        const progressPercent = currentPoints / checkpoints[0].points;
+        const progressWidth = Math.min(progressPercent * (totalWidth / checkpoints.length), totalWidth / checkpoints.length);
+        progressBar.style.width = `${progressWidth}px`;
+    } else if (activeCheckpoint < checkpoints.length) {
+        // Some checkpoints completed
+        const lastCompletedPoints = checkpoints[activeCheckpoint - 1].points;
+        const nextCheckpointPoints = checkpoints[activeCheckpoint].points;
+        
+        const baseWidth = (activeCheckpoint / checkpoints.length) * totalWidth;
+        const sectionWidth = totalWidth / checkpoints.length;
+        
+        const progress = (currentPoints - lastCompletedPoints) / (nextCheckpointPoints - lastCompletedPoints);
+        const additionalWidth = sectionWidth * progress;
+        
+        progressBar.style.width = `${baseWidth + additionalWidth}px`;
+    } else {
+        // All checkpoints completed
+        progressBar.style.width = `${totalWidth}px`;
+    }
+}
+
+// Function to save data to localStorage
+function saveData() {
+    localStorage.setItem('loyaltyUsers', JSON.stringify(users));
+}
+
+// Function to load data from localStorage
+function loadData() {
+    // Load users
+    const savedData = localStorage.getItem('loyaltyUsers');
+    if (savedData) {
+        users = JSON.parse(savedData);
+    }
+    
+    // Load admin password if it exists
+    const savedPassword = localStorage.getItem('loyaltyAdminPassword');
+    if (savedPassword) {
+        adminPassword = savedPassword;
+    }
+}
