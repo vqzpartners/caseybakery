@@ -79,7 +79,7 @@
         
         @media (min-width: 1024px) {
             .buttons-container {
-                align-items: flex-start;
+                align-items: center; /* Changed from flex-start to center */
             }
         }
         
@@ -111,9 +111,11 @@
         .logo-img {
             max-width: 200px;
             margin-bottom: 20px;
+            margin-left: auto;
+            margin-right: auto; /* Ensuring logo is centered */
         }
         
-        /* Fixed position for stacked polaroids */
+        /* Updated stacked polaroids positioning */
         .carousel-container {
             position: relative;
         }
@@ -134,9 +136,10 @@
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
         }
         
+        /* Adjusted positioning to be more concentrated */
         .stacked-background .polaroid-bg:nth-child(1) {
             top: 10px;
-            left: -5px;
+            left: 5%; /* Changed from -5px to percentage */
             transform: rotate(-4deg);
             width: 90%;
             height: 90%;
@@ -144,7 +147,7 @@
         
         .stacked-background .polaroid-bg:nth-child(2) {
             top: 5px;
-            right: -5px;
+            left: 3%; /* Changed from right: -5px to left with percentage */
             transform: rotate(3deg);
             width: 90%;
             height: 90%;
@@ -153,11 +156,11 @@
 </head>
 <body>
     <div class="container mx-auto px-4 py-8">
-        <!-- Desktop layout (logo/buttons on left, carousel on right) -->
-        <div class="flex flex-col lg:flex-row lg:items-start lg:justify-between">
-            <!-- Left column (logo and buttons) -->
-            <div class="lg:w-1/3 text-center lg:text-left mb-8 lg:mb-0">
-                <img src="img/casey/casey-bakery.svg" alt="Casey's Home Bakes" class="logo-img mx-auto lg:mx-0">
+        <!-- Desktop layout (adjusted for better centering) -->
+        <div class="flex flex-col lg:flex-row lg:items-center lg:justify-center"> <!-- Changed justify-between to justify-center -->
+            <!-- Left column (logo and buttons) - adjusted spacing -->
+            <div class="lg:w-1/3 text-center mb-8 lg:mb-0 lg:mr-8"> <!-- Added margin right -->
+                <img src="img/casey/casey-bakery.svg" alt="Casey's Home Bakes" class="logo-img mx-auto">
                 
                 <div class="buttons-container">
                     <a href="https://www.instagram.com/caseybakerypa/" class="button">
@@ -170,7 +173,7 @@
             </div>
             
             <!-- Right column (carousel) -->
-            <div class="lg:w-2/3">
+            <div class="lg:w-1/2"> <!-- Changed from 2/3 to 1/2 to balance the layout better -->
                 <div class="carousel-container">
                     <!-- Background stacked polaroids -->
                     <div class="stacked-background">
