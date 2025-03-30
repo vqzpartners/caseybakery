@@ -17,7 +17,7 @@
         }
         
         .title {
-            font-family: 'Pacifico', cursive; /* Using Pacifico as a fallback */
+            font-family: 'Pacifico', cursive;
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
         }
         
@@ -26,8 +26,7 @@
             width: 100%;
             max-width: 400px;
             margin: 0 auto;
-            overflow: hidden;
-            border-radius: 3px;
+            overflow: visible;
         }
         
         .carousel-inner {
@@ -48,6 +47,27 @@
             margin: 10px;
             transform: rotate(0deg);
             transition: transform 0.3s ease;
+        }
+        
+        /* Stacked polaroid effect */
+        .stacked-polaroids {
+            position: relative;
+        }
+        
+        .stacked-polaroids .polaroid:nth-child(1) {
+            position: absolute;
+            top: 3px;
+            left: 3px;
+            z-index: -1;
+            transform: rotate(-3deg);
+        }
+        
+        .stacked-polaroids .polaroid:nth-child(2) {
+            position: absolute;
+            top: 7px;
+            left: -5px;
+            z-index: -2;
+            transform: rotate(2deg);
         }
         
         .polaroid img {
@@ -76,31 +96,6 @@
             width: 6px;
         }
         
-        .carousel-nav {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            pointer-events: none;
-        }
-        
-        .nav-btn {
-            width: 30px;
-            height: 30px;
-            border-radius: 50%;
-            background-color: rgba(255, 255, 255, 0.7);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            pointer-events: auto;
-            margin: 0 10px;
-        }
-        
         .button {
             background-color: white;
             color: #ac0201;
@@ -109,63 +104,94 @@
             font-weight: bold;
             transition: all 0.3s ease;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            margin-bottom: 15px;
+            display: inline-block;
+            width: 180px;
+            text-align: center;
         }
         
         .button:hover {
             transform: translateY(-2px);
             box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2);
         }
+        
+        .slide-instruction {
+            text-align: center;
+            margin-top: 15px;
+            font-size: 14px;
+            opacity: 0.8;
+        }
+        
+        .logo-img {
+            max-width: 300px;
+            margin-bottom: 20px;
+        }
     </style>
 </head>
 <body>
     <div class="container mx-auto px-4 py-8">
-        <header class="text-center mb-8">
-            <h1 class="title text-5xl md:text-6xl mb-6">Casey's Home Bakes</h1>
-            <div class="flex flex-wrap justify-center gap-4 mb-8">
-                <a href="https://www.instagram.com/caseybakerypa/" class="button inline-block">
-                    Instagram
-                </a>
-                <a href="https://caseybakery.shop/loyalty" class="button inline-block">
-                    Loyalty Program
-                </a>
-            </div>
-        </header>
-        
-        <div class="instagram-carousel">
-            <div class="carousel-inner">
-                <div class="carousel-item">
-                    <div class="polaroid" style="transform: rotate(-2deg);">
-                        <img src="img/casey/2025/image0.jpeg" alt="Casey's Bakery Item" loading="lazy">
-                    </div>
-                </div>
-                <div class="carousel-item">
-                    <div class="polaroid" style="transform: rotate(1deg);">
-                        <img src="img/casey/2025/image3.jpeg" alt="Casey's Bakery Item" loading="lazy">
-                    </div>
-                </div>
-                <div class="carousel-item">
-                    <div class="polaroid" style="transform: rotate(-1deg);">
-                        <img src="img/casey/2025/image4.jpeg" alt="Casey's Bakery Item" loading="lazy">
-                    </div>
-                </div>
-                <div class="carousel-item">
-                    <div class="polaroid" style="transform: rotate(2deg);">
-                        <img src="img/casey/2025/image6.jpeg" alt="Casey's Bakery Item" loading="lazy">
-                    </div>
+        <!-- Desktop layout (logo/buttons on left, carousel on right) -->
+        <div class="flex flex-col lg:flex-row lg:items-center">
+            <!-- Left column (logo and buttons) -->
+            <div class="lg:w-1/2 text-center lg:text-left mb-8 lg:mb-0">
+                <img src="img/casey/casey-bakery.svg" alt="Casey's Home Bakes" class="logo-img mx-auto lg:mx-0">
+                
+                <div class="flex flex-col items-center lg:items-start">
+                    <a href="https://www.instagram.com/caseybakerypa/" class="button">
+                        Instagram
+                    </a>
+                    <a href="https://caseybakery.shop/loyalty" class="button">
+                        Loyalty Program
+                    </a>
                 </div>
             </div>
             
-            <div class="carousel-nav">
-                <div class="nav-btn prev">❮</div>
-                <div class="nav-btn next">❯</div>
+            <!-- Right column (carousel) -->
+            <div class="lg:w-1/2">
+                <div class="instagram-carousel">
+                    <div class="stacked-polaroids">
+                        <!-- Background polaroids for stacked effect -->
+                        <div class="polaroid">
+                            <img src="img/casey/2025/image0.jpeg" alt="Casey's Bakery Item" loading="lazy">
+                        </div>
+                        <div class="polaroid">
+                            <img src="img/casey/2025/image3.jpeg" alt="Casey's Bakery Item" loading="lazy">
+                        </div>
+                    </div>
+                    
+                    <div class="carousel-inner">
+                        <div class="carousel-item">
+                            <div class="polaroid" style="transform: rotate(-2deg);">
+                                <img src="img/casey/2025/image0.jpeg" alt="Casey's Bakery Item" loading="lazy">
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <div class="polaroid" style="transform: rotate(1deg);">
+                                <img src="img/casey/2025/image3.jpeg" alt="Casey's Bakery Item" loading="lazy">
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <div class="polaroid" style="transform: rotate(-1deg);">
+                                <img src="img/casey/2025/image4.jpeg" alt="Casey's Bakery Item" loading="lazy">
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <div class="polaroid" style="transform: rotate(2deg);">
+                                <img src="img/casey/2025/image6.jpeg" alt="Casey's Bakery Item" loading="lazy">
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="slide-instruction">Swipe or drag to see more treats!</div>
+                </div>
+                
+                <div class="carousel-dots">
+                    <div class="dot active" data-index="0"></div>
+                    <div class="dot" data-index="1"></div>
+                    <div class="dot" data-index="2"></div>
+                    <div class="dot" data-index="3"></div>
+                </div>
             </div>
-        </div>
-        
-        <div class="carousel-dots">
-            <div class="dot active" data-index="0"></div>
-            <div class="dot" data-index="1"></div>
-            <div class="dot" data-index="2"></div>
-            <div class="dot" data-index="3"></div>
         </div>
     </div>
 
@@ -174,12 +200,12 @@
             const carouselInner = document.querySelector('.carousel-inner');
             const carouselItems = document.querySelectorAll('.carousel-item');
             const dots = document.querySelectorAll('.dot');
-            const prevBtn = document.querySelector('.nav-btn.prev');
-            const nextBtn = document.querySelector('.nav-btn.next');
             
             let currentIndex = 0;
             let startX, moveX;
             let itemWidth = carouselItems[0].clientWidth;
+            let autoSlideInterval;
+            let isDragging = false;
             
             // Update dots to show current slide
             function updateDots() {
@@ -209,28 +235,36 @@
                 updateCarousel();
             }
             
+            // Start automatic slideshow
+            function startAutoSlide() {
+                autoSlideInterval = setInterval(() => {
+                    goToSlide(currentIndex + 1);
+                }, 5000);
+            }
+            
+            // Stop automatic slideshow
+            function stopAutoSlide() {
+                clearInterval(autoSlideInterval);
+            }
+            
             // Event listeners for dots
             dots.forEach(dot => {
                 dot.addEventListener('click', function() {
                     const index = parseInt(this.getAttribute('data-index'));
                     goToSlide(index);
+                    
+                    // Reset timer when manually changing slides
+                    stopAutoSlide();
+                    startAutoSlide();
                 });
             });
             
-            // Event listeners for buttons
-            prevBtn.addEventListener('click', () => {
-                goToSlide(currentIndex - 1);
-            });
-            
-            nextBtn.addEventListener('click', () => {
-                goToSlide(currentIndex + 1);
-            });
-            
-            // Touch events for swiping
+            // Touch events for swiping on mobile
             carouselInner.addEventListener('touchstart', (e) => {
                 startX = e.touches[0].clientX;
                 // Pause transition during touch
                 carouselInner.style.transition = 'none';
+                stopAutoSlide();
             });
             
             carouselInner.addEventListener('touchmove', (e) => {
@@ -265,6 +299,59 @@
                 
                 startX = null;
                 moveX = null;
+                
+                // Restart auto slide after interaction
+                startAutoSlide();
+            });
+            
+            // Mouse events for dragging on desktop
+            carouselInner.addEventListener('mousedown', (e) => {
+                e.preventDefault();
+                startX = e.clientX;
+                isDragging = true;
+                // Pause transition during drag
+                carouselInner.style.transition = 'none';
+                stopAutoSlide();
+            });
+            
+            document.addEventListener('mousemove', (e) => {
+                if (!isDragging) return;
+                
+                moveX = e.clientX;
+                const diffX = startX - moveX;
+                
+                // Calculate how far to slide based on mouse movement
+                const offsetX = -(currentIndex * itemWidth) - diffX;
+                carouselInner.style.transform = `translateX(${offsetX / itemWidth * 100}%)`;
+            });
+            
+            document.addEventListener('mouseup', () => {
+                if (!isDragging) return;
+                
+                isDragging = false;
+                carouselInner.style.transition = 'transform 0.3s ease';
+                
+                if (!startX || !moveX) return;
+                
+                const diffX = startX - moveX;
+                
+                // If drag distance is greater than 50px, change slide
+                if (Math.abs(diffX) > 50) {
+                    if (diffX > 0) {
+                        goToSlide(currentIndex + 1);
+                    } else {
+                        goToSlide(currentIndex - 1);
+                    }
+                } else {
+                    // If drag is not decisive, return to current slide
+                    updateCarousel();
+                }
+                
+                startX = null;
+                moveX = null;
+                
+                // Restart auto slide after interaction
+                startAutoSlide();
             });
             
             // Update item width on window resize
@@ -275,6 +362,7 @@
             
             // Initialize
             updateCarousel();
+            startAutoSlide();
             
             // Random rotation for polaroids on load
             document.querySelectorAll('.polaroid').forEach(polaroid => {
