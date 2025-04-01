@@ -6,8 +6,6 @@ function renderDrops() {
         // Determine image source based on status and release date
         let imageSrc;
         if (drop.status === 'coming-soon') {
-            // If there's a release date, use the image from data
-            // Otherwise use the mystery image
             imageSrc = drop.releaseDate ? drop.image : 'img/casey/mistery.jpg';
         } else {
             imageSrc = drop.image;
@@ -16,11 +14,9 @@ function renderDrops() {
         // Determine button text and action
         let buttonType, buttonText;
         if (drop.status === 'available' && drop.url) {
-            // Available with URL - direct link
             buttonType = 'link';
             buttonText = 'ORDER NOW';
         } else {
-            // Coming soon or available without URL - waitlist
             buttonType = 'waitlist';
             buttonText = 'NOTIFY ME';
         }
@@ -205,3 +201,30 @@ function setupNewsletterForms() {
         formContainer.classList.add("newsletter-handlers-added");
     }
 }
+
+// Initialize everything when the page loads
+document.addEventListener('DOMContentLoaded', function() {
+    // Render drops
+    renderDrops();
+    
+    // Set up modal functionality
+    const modal = document.getElementById("waitlistModal");
+    const closeButton = document.querySelector(".close-button");
+    
+    closeButton.addEventListener("click", function() {
+        modal.style.display = "none";
+    });
+    
+    window.addEventListener("click", function(event) {
+        if (event.target === modal) {
+            modal.style.display = "none";
+        }
+    });
+    
+    // Start timer updates
+    updateTimers();
+    setInterval(updateTimers, 1000);
+    
+    // Set up newsletter forms
+    setupNewsletterForms();
+});
