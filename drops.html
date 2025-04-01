@@ -24,12 +24,6 @@
             padding: 20px;
         }
         
-        @media (max-width: 768px) {
-            .drop-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
-        
         .drop-item {
             position: relative;
             background-color: white;
@@ -169,6 +163,23 @@
         .newsletter-form-container {
             width: 100%;
         }
+
+        /* Tablet screens (768px to 1023px) */
+@media (max-width: 1023px) {
+    .drop-title {
+        font-size: 11px;
+    }
+}
+
+/* Mobile screens (below 768px) */
+@media (max-width: 767px) {
+    .drop-title {
+        font-size: 9px;
+    }
+    .drop-grid { grid-template-columns: repeat(2, 1fr);
+            
+    }
+}
     </style>
 </head>
 <body>
