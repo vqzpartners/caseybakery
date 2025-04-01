@@ -37,11 +37,18 @@
             overflow: hidden;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
             transition: transform 0.3s ease;
-            aspect-ratio: 1 / 1;
+            display: flex;
+            flex-direction: column;
         }
         
         .drop-item:hover {
             transform: translateY(-5px);
+        }
+        
+        .drop-image-container {
+            position: relative;
+            aspect-ratio: 1 / 1;
+            overflow: hidden;
         }
         
         .drop-image {
@@ -52,44 +59,56 @@
         
         .drop-label {
             position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
+            top: 10px;
+            right: 10px;
             background-color: rgba(0, 0, 0, 0.7);
             color: white;
-            padding: 8px;
+            padding: 5px 10px;
+            text-align: center;
+            font-size: 12px;
+            font-weight: bold;
+            border-radius: 4px;
+        }
+        
+        .drop-timer {
+            position: absolute;
+            bottom: 10px;
+            left: 10px;
+            right: 10px;
+            background-color: rgba(0, 0, 0, 0.7);
+            color: white;
+            padding: 5px;
             text-align: center;
             font-size: 14px;
             font-weight: bold;
+            border-radius: 4px;
         }
         
-        .drop-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(172, 2, 1, 0.3);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            opacity: 0;
-            transition: opacity 0.3s ease;
+        .drop-content {
+            padding: 12px;
+            background-color: white;
+            color: black;
         }
         
-        .drop-item:hover .drop-overlay {
-            opacity: 1;
+        .drop-title {
+            font-size: 16px;
+            font-weight: bold;
+            margin-bottom: 8px;
+            color: #ac0201;
         }
         
         .drop-button {
-            background-color: white;
-            color: #ac0201;
+            background-color: #ac0201;
+            color: white;
             padding: 8px 16px;
-            border-radius: 20px;
+            border-radius: 4px;
             font-weight: bold;
             transition: all 0.3s ease;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
             text-align: center;
+            display: block;
+            width: 100%;
+            margin-top: 8px;
         }
         
         .drop-button:hover {
@@ -163,69 +182,99 @@
         <div class="drop-grid">
             <!-- Drop 1 - Available -->
             <div class="drop-item">
-                <img src="img/casey/2025/image0.jpeg" alt="Available Drop" class="drop-image">
-                <div class="drop-label">ORDER</div>
-                <div class="drop-overlay">
+                <div class="drop-image-container">
+                    <img src="img/casey/2025/image0.jpeg" alt="Available Drop" class="drop-image">
+                    <div class="drop-label">AVAILABLE</div>
+                </div>
+                <div class="drop-content">
+                    <h3 class="drop-title">Winter Classics</h3>
                     <a href="https://caseybakery.shop/drop1" class="drop-button">Order Now</a>
                 </div>
             </div>
             
             <!-- Drop 2 - Available -->
             <div class="drop-item">
-                <img src="img/casey/2025/image3.jpeg" alt="Available Drop" class="drop-image">
-                <div class="drop-label">NOTIFY</div>
-                <div class="drop-overlay">
+                <div class="drop-image-container">
+                    <img src="img/casey/2025/image3.jpeg" alt="Available Drop" class="drop-image">
+                    <div class="drop-label">AVAILABLE</div>
+                </div>
+                <div class="drop-content">
+                    <h3 class="drop-title">Seasonal Favorites</h3>
                     <button class="drop-button waitlist-trigger" data-drop="Winter Collection">Join Waitlist</button>
                 </div>
             </div>
             
             <!-- Drop 3 - Coming Soon -->
             <div class="drop-item">
-                <img src="img/casey/2025/image4.jpeg" alt="Coming Soon Drop" class="drop-image">
-                <div class="drop-label">COMING SOON</div>
-                <div class="drop-overlay">
+                <div class="drop-image-container">
+                    <img src="img/casey/mistery.jpg" alt="Coming Soon Drop" class="drop-image">
+                    <div class="drop-label">COMING SOON</div>
+                    <div class="drop-timer" data-countdown="2025-05-15T10:00:00">Loading...</div>
+                </div>
+                <div class="drop-content">
+                    <h3 class="drop-title">Spring Collection</h3>
                     <button class="drop-button waitlist-trigger" data-drop="Spring Collection">Join Waitlist</button>
                 </div>
             </div>
             
             <!-- Drop 4 - Coming Soon -->
             <div class="drop-item">
-                <img src="img/casey/2025/image6.jpeg" alt="Coming Soon Drop" class="drop-image">
-                <div class="drop-label">COMING SOON</div>
-                <div class="drop-overlay">
+                <div class="drop-image-container">
+                    <img src="img/casey/mistery.jpg" alt="Coming Soon Drop" class="drop-image">
+                    <div class="drop-label">COMING SOON</div>
+                    <div class="drop-timer" data-countdown="2025-07-01T10:00:00">Loading...</div>
+                </div>
+                <div class="drop-content">
+                    <h3 class="drop-title">Summer Collection</h3>
                     <button class="drop-button waitlist-trigger" data-drop="Summer Collection">Join Waitlist</button>
                 </div>
             </div>
             
             <!-- Additional drops for the second row -->
             <div class="drop-item">
-                <img src="img/casey/2025/image0.jpeg" alt="Coming Soon Drop" class="drop-image">
-                <div class="drop-label">COMING SOON</div>
-                <div class="drop-overlay">
+                <div class="drop-image-container">
+                    <img src="img/casey/mistery.jpg" alt="Coming Soon Drop" class="drop-image">
+                    <div class="drop-label">COMING SOON</div>
+                    <div class="drop-timer" data-countdown="2025-09-01T10:00:00">Loading...</div>
+                </div>
+                <div class="drop-content">
+                    <h3 class="drop-title">Fall Collection</h3>
                     <button class="drop-button waitlist-trigger" data-drop="Fall Collection">Join Waitlist</button>
                 </div>
             </div>
             
             <div class="drop-item">
-                <img src="img/casey/2025/image3.jpeg" alt="Coming Soon Drop" class="drop-image">
-                <div class="drop-label">COMING SOON</div>
-                <div class="drop-overlay">
+                <div class="drop-image-container">
+                    <img src="img/casey/mistery.jpg" alt="Coming Soon Drop" class="drop-image">
+                    <div class="drop-label">COMING SOON</div>
+                    <div class="drop-timer" data-countdown="2025-10-15T10:00:00">Loading...</div>
+                </div>
+                <div class="drop-content">
+                    <h3 class="drop-title">Holiday Collection</h3>
                     <button class="drop-button waitlist-trigger" data-drop="Holiday Collection">Join Waitlist</button>
                 </div>
             </div>
             
             <div class="drop-item">
-                <img src="img/casey/2025/image4.jpeg" alt="Coming Soon Drop" class="drop-image">
-                <div class="drop-label">COMING SOON</div>
-                <div class="drop-overlay">
+                <div class="drop-image-container">
+                    <img src="img/casey/mistery.jpg" alt="Coming Soon Drop" class="drop-image">
+                    <div class="drop-label">COMING SOON</div>
+                    <div class="drop-timer" data-countdown="2025-11-01T10:00:00">Loading...</div>
+                </div>
+                <div class="drop-content">
+                    <h3 class="drop-title">Special Edition</h3>
                     <button class="drop-button waitlist-trigger" data-drop="Special Edition">Join Waitlist</button>
                 </div>
             </div>
             
             <div class="drop-item">
-                <img src="img/casey/2025/image6.jpeg" alt="Coming Soon Drop" class="drop-image">
-                <div class="drop-label">COMING SOON</div>
-                <div class="drop-overlay">
+                <div class="drop-image-container">
+                    <img src="img/casey/mistery.jpg" alt="Coming Soon Drop" class="drop-image">
+                    <div class="drop-label">COMING SOON</div>
+                    <div class="drop-timer" data-countdown="2025-12-01T10:00:00">Loading...</div>
+                </div>
+                <div class="drop-content">
+                    <h3 class="drop-title">Limited Collection</h3>
                     <button class="drop-button waitlist-trigger" data-drop="Limited Collection">Join Waitlist</button>
                 </div>
             </div>
@@ -235,8 +284,8 @@
         <div id="waitlistModal" class="modal">
             <div class="modal-content">
                 <span class="close-button">&times;</span>
-                <h2 class="text-xl font-bold mb-4 text-center">Join the Waitlist</h2>
-                <p class="mb-4 text-center">Be the first to know when <span id="dropName"></span> is available!</p>
+                <h2 class="text-xl font-bold mb-4 text-center">Don't Miss Out</h2>
+                <p class="mb-4 text-center">Be the first to know when drops are available!</p>
                 
                 <div class="newsletter-form-container">
                     <form class="newsletter-form" action="https://app.loops.so/api/newsletter-form/cm8yuaee103a1mzpkubdnxtyw" method="POST" style="display: flex; flex-direction: column; align-items: center; justify-content: center; width: 100%;">
@@ -276,13 +325,10 @@
             const modal = document.getElementById("waitlistModal");
             const closeButton = document.querySelector(".close-button");
             const waitlistTriggers = document.querySelectorAll(".waitlist-trigger");
-            const dropNameElement = document.getElementById("dropName");
             
             // Open modal with specific drop name
             waitlistTriggers.forEach(button => {
                 button.addEventListener("click", function() {
-                    const dropName = this.getAttribute("data-drop");
-                    dropNameElement.textContent = dropName;
                     modal.style.display = "flex";
                 });
             });
@@ -298,6 +344,32 @@
                     modal.style.display = "none";
                 }
             });
+            
+            // Timer functionality
+            function updateTimers() {
+                const timers = document.querySelectorAll('.drop-timer');
+                
+                timers.forEach(timer => {
+                    const targetDate = new Date(timer.getAttribute('data-countdown')).getTime();
+                    const now = new Date().getTime();
+                    const distance = targetDate - now;
+                    
+                    if (distance < 0) {
+                        timer.innerHTML = "Coming soon!";
+                    } else {
+                        const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+                        const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                        const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                        const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+                        
+                        timer.innerHTML = days + "d " + hours + "h " + minutes + "m " + seconds + "s";
+                    }
+                });
+            }
+            
+            // Update timers every second
+            updateTimers();
+            setInterval(updateTimers, 1000);
             
             // Newsletter form functionality
             function submitHandler(event) {
