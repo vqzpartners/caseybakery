@@ -43,7 +43,7 @@ function renderDrops() {
         } else {
             // Coming soon or available without URL - waitlist
             buttonType = 'waitlist';
-            buttonText = drop.status === 'coming-soon' ? 'NOTIFY ME' : 'Join Waitlist';
+            buttonText = drop.status === 'coming-soon' ? 'NOTIFY ME';
         }
         
         // Create the HTML for this drop
