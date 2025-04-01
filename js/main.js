@@ -1,45 +1,24 @@
-document.addEventListener('DOMContentLoaded', function() {
-    // Render all drops
-    renderDrops();
-    
-    // Modal functionality
-    const modal = document.getElementById("waitlistModal");
-    const closeButton = document.querySelector(".close-button");
-    
-    // Close modal when clicking X
-    closeButton.addEventListener("click", function() {
-        modal.style.display = "none";
-    });
-    
-    // Close modal when clicking outside
-    window.addEventListener("click", function(event) {
-        if (event.target === modal) {
-            modal.style.display = "none";
-        }
-    });
-    
-    // Timer functionality - only update timers that exist
-    updateTimers();
-    setInterval(updateTimers, 1000);
-    
-    // Setup newsletter form handlers
-    setupNewsletterForms();
-});
-
 // Function to render all drops from the data file
 function renderDrops() {
     const container = document.getElementById('drops-container');
     
     bakeryDrops.forEach(drop => {
-        // Determine image source based on status
-        const imageSrc = drop.status === 'coming-soon' ? 'img/casey/mistery.jpg' : drop.image;
+        // Determine image source based on status and release date
+        let imageSrc;
+        if (drop.status === 'coming-soon') {
+            // If there's a release date, use the image from data
+            // Otherwise use the mystery image
+            imageSrc = drop.releaseDate ? drop.image : 'img/casey/mistery.jpg';
+        } else {
+            imageSrc = drop.image;
+        }
         
         // Determine button text and action
         let buttonType, buttonText;
         if (drop.status === 'available' && drop.url) {
             // Available with URL - direct link
             buttonType = 'link';
-            buttonText = 'Order Now';
+            buttonText = 'ORDER NOW';
         } else {
             // Coming soon or available without URL - waitlist
             buttonType = 'waitlist';
