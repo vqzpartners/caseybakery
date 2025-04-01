@@ -4,7 +4,7 @@ const bakeryDrops = [
     {
         id: 1,
         title: "Cuchareable Maracuya",
-        status: "available", // "available" or "coming-soon"
+        status: "coming-soon", // "available" or "coming-soon"
         image: "img/casey/maracuya.gif", // Will be overridden with mystery image if status is "coming-soon"
         url: "", // Only used if status is "available"
         releaseDate: "2025-04-05T00:00:00" // Only used if status is "coming-soon" - Format: "YYYY-MM-DDThh:mm:ss"
