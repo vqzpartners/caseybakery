@@ -14,7 +14,6 @@
             font-family: 'Roboto Mono', monospace;
             overflow-x: hidden;
         }
-        
         .calendar {
             max-width: 1200px;
             margin: 0 auto;
@@ -22,26 +21,22 @@
             border-radius: 10px;
             padding: 20px;
         }
-        
         .calendar-header {
             display: flex;
             justify-content: space-between;
             align-items: center;
             margin-bottom: 20px;
         }
-        
         .calendar-grid {
             display: grid;
             grid-template-columns: repeat(7, 1fr);
             gap: 10px;
         }
-        
         .calendar-day-header {
             text-align: center;
             font-weight: bold;
             padding: 10px;
         }
-        
         .calendar-day {
             min-height: 120px;
             background-color: rgba(255, 255, 255, 0.05);
@@ -49,11 +44,9 @@
             padding: 5px;
             position: relative;
         }
-        
         .calendar-day.other-month {
             opacity: 0.5;
         }
-        
         .calendar-day-number {
             position: absolute;
             top: 5px;
@@ -61,8 +54,7 @@
             font-size: 12px;
             font-weight: bold;
         }
-        
-        .drop-item {
+        .drop-delivery {
             margin-top: 20px;
             background-color: white;
             border-radius: 8px;
@@ -72,24 +64,21 @@
             display: flex;
             flex-direction: column;
         }
-        
-        .drop-item:hover {
+        .drop-delivery:hover {
             transform: translateY(-2px);
         }
-        
-        .drop-image-container {
-            position: relative;
-            aspect-ratio: 1 / 1;
-            overflow: hidden;
+        .drop-content {
+            padding: 8px;
+            background-color: white;
+            color: black;
         }
-        
-        .drop-image {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
+        .drop-title {
+            font-size: 11px;
+            font-weight: bold;
+            margin-bottom: 5px;
+            color: #ac0201;
         }
-        
-        .drop-label {
+        .drop-status {
             position: absolute;
             top: 5px;
             right: 5px;
@@ -101,12 +90,7 @@
             font-weight: bold;
             border-radius: 4px;
         }
-        
         .drop-timer {
-            position: absolute;
-            bottom: 5px;
-            left: 5px;
-            right: 5px;
             background-color: rgba(0, 0, 0, 0.7);
             color: white;
             padding: 3px;
@@ -114,21 +98,8 @@
             font-size: 10px;
             font-weight: bold;
             border-radius: 4px;
-        }
-        
-        .drop-content {
-            padding: 8px;
-            background-color: white;
-            color: black;
-        }
-        
-        .drop-title {
-            font-size: 11px;
-            font-weight: bold;
             margin-bottom: 5px;
-            color: #ac0201;
         }
-        
         .drop-button {
             background-color: #ac0201;
             color: white;
@@ -142,12 +113,25 @@
             width: 100%;
             font-size: 10px;
         }
-        
         .drop-button:hover {
             transform: scale(1.05);
             box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
         }
-        
+        .drop-pill {
+            display: inline-block;
+            background-color: #f3f4f6;
+            border: 1px solid #e5e7eb;
+            color: #ac0201;
+            border-radius: 12px;
+            padding: 2px 6px;
+            font-size: 8px;
+            margin: 2px;
+            font-weight: bold;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            max-width: 100%;
+        }
         .modal {
             display: none;
             position: fixed;
@@ -160,7 +144,6 @@
             align-items: center;
             justify-content: center;
         }
-        
         .modal-content {
             background-color: white;
             padding: 30px;
@@ -170,7 +153,6 @@
             color: black;
             position: relative;
         }
-        
         .close-button {
             position: absolute;
             top: 10px;
@@ -179,36 +161,11 @@
             cursor: pointer;
             color: #999;
         }
-        
-        .logo-header {
-            display: flex;
-            justify-content: center;
-            padding: 20px 0;
-        }
-        
-        .logo-img {
-            max-width: 90px;
-        }
-        
-        .footer {
-            text-align: center;
-            padding: 20px 0;
-            margin-top: 40px;
-            font-size: 12px;
-            opacity: 0.8;
-        }
-        
-        .newsletter-form-container {
-            width: 100%;
-        }
-        
-        /* Month navigation */
         .month-nav {
             display: flex;
             align-items: center;
             justify-content: center;
         }
-        
         .month-nav button {
             background: none;
             border: none;
@@ -217,90 +174,36 @@
             cursor: pointer;
             padding: 0 15px;
         }
-        
         .month-nav h2 {
             margin: 0 10px;
             font-size: 18px;
             font-weight: bold;
         }
-        
-        /* Responsive styles */
-        @media (max-width: 1023px) {
-            .calendar-grid {
-                gap: 5px;
-            }
-            
-            .calendar-day {
-                min-height: 100px;
-            }
-        }
-        
-        @media (max-width: 767px) {
-            .calendar-grid {
-                grid-template-columns: repeat(7, 1fr);
-            }
-            
-            .calendar-day {
-                min-height: 80px;
-                padding: 2px;
-            }
-            
-            .calendar-day-number {
-                font-size: 10px;
-            }
-            
-            .drop-title {
-                font-size: 9px;
-                margin-bottom: 2px;
-            }
-            
-            .drop-button {
-                padding: 2px 4px;
-                font-size: 8px;
-            }
-            
-            .drop-timer, .drop-label {
-                font-size: 8px;
-                padding: 2px;
-            }
-            
-            .month-nav h2 {
-                font-size: 16px;
-            }
-        }
-        
-        /* Additional styles for drop pills */
-        .drop-pills {
+        .pills-container {
             display: flex;
             flex-wrap: wrap;
-            gap: 4px;
-            margin-bottom: 6px;
+            gap: 2px;
+            margin: 5px 0;
         }
-        .drop-pill {
-            background-color: rgba(172, 2, 1, 0.15);
-            color: #ac0201;
-            border: 1px solid rgba(172, 2, 1, 0.3);
-            font-size: 8px;
-            padding: 2px 5px;
-            border-radius: 12px;
-            font-weight: bold;
-            white-space: nowrap;
-            text-overflow: ellipsis;
-            overflow: hidden;
-            max-width: 100%;
+        @media (max-width: 1023px) {
+            .calendar-grid { gap: 5px; }
+            .calendar-day { min-height: 100px; }
         }
         @media (max-width: 767px) {
-            .drop-pill {
-                font-size: 7px;
-                padding: 1px 3px;
-            }
+            .calendar-grid { grid-template-columns: repeat(7, 1fr); }
+            .calendar-day { min-height: 80px; padding: 2px; }
+            .calendar-day-number { font-size: 10px; }
+            .drop-title { font-size: 9px; margin-bottom: 2px; }
+            .drop-button { padding: 2px 4px; font-size: 8px; }
+            .drop-timer, .drop-status { font-size: 8px; padding: 2px; }
+            .month-nav h2 { font-size: 16px; }
         }
     </style>
 </head>
 <body>
     <div class="container mx-auto px-4 py-8">
-        <div class="logo-header">
-            <img src="img/casey/casey-bakery.svg" alt="Casey's Home Bakes" class="logo-img">
+        <div class="text-center py-4">
+            <img src="img/casey/casey-bakery.svg" alt="Casey's Home Bakes" class="max-w-[90px] inline-block">
         </div>
         
         <h1 class="text-center text-3xl font-bold mb-8">DROP CALENDAR</h1>
@@ -339,14 +242,10 @@
                 <div class="newsletter-form-container">
                     <form class="newsletter-form" action="https://app.loops.so/api/newsletter-form/cm8yuaee103a1mzpkubdnxtyw" method="POST" style="display: flex; flex-direction: column; align-items: center; justify-content: center; width: 100%;">
                         <input class="newsletter-form-input" name="firstName" type="text" placeholder="Your Name" required style="font-family: Roboto, sans-serif; color: rgb(0, 0, 0); font-size: 14px; margin: 0px 0px 10px; width: 100%; max-width: 300px; min-width: 100px; background: rgb(255, 255, 255); border: 1px solid rgb(209, 213, 219); box-sizing: border-box; box-shadow: rgba(0, 0, 0, 0.05) 0px 1px 2px; border-radius: 6px; padding: 8px 12px;">
-                        
                         <input class="newsletter-form-input" name="email" type="email" placeholder="juan@ejemplo.com" required style="font-family: Roboto, sans-serif; color: rgb(0, 0, 0); font-size: 14px; margin: 0px 0px 10px; width: 100%; max-width: 300px; min-width: 100px; background: rgb(255, 255, 255); border: 1px solid rgb(209, 213, 219); box-sizing: border-box; box-shadow: rgba(0, 0, 0, 0.05) 0px 1px 2px; border-radius: 6px; padding: 8px 12px;">
-                        
                         <input type="hidden" name="mailingLists" value="cm8yuhcd801nv0iylbpd67yx8">
-                        <input type="hidden" id="dropNameField" name="dropName" value="">
-                        
+                        <input type="hidden" id="dropDateField" name="dropDate" value="">
                         <button type="submit" class="newsletter-form-button" style="background: rgb(172, 2, 1); font-size: 14px; color: rgb(255, 255, 255); font-family: Roboto, sans-serif; display: flex; width: 100%; max-width: 300px; white-space: normal; height: 38px; align-items: center; justify-content: center; flex-direction: row; padding: 9px 17px; box-shadow: rgba(0, 0, 0, 0.05) 0px 1px 2px; border-radius: 6px; text-align: center; font-style: normal; font-weight: 500; line-height: 20px; border: none; cursor: pointer;">Get Notified</button>
-                        
                         <button type="button" class="newsletter-loading-button" style="background: rgb(172, 2, 1); font-size: 14px; color: rgb(255, 255, 255); font-family: Roboto, sans-serif; display: none; width: 100%; max-width: 300px; white-space: normal; height: 38px; align-items: center; justify-content: center; flex-direction: row; padding: 9px 17px; box-shadow: rgba(0, 0, 0, 0.05) 0px 1px 2px; border-radius: 6px; text-align: center; font-style: normal; font-weight: 500; line-height: 20px; border: none; cursor: pointer;">Please wait...</button>
                     </form>
                     
@@ -364,7 +263,7 @@
         </div>
         
         <!-- Footer -->
-        <div class="footer">
+        <div class="text-center pt-8 pb-4 text-sm opacity-80">
             &copy; <span id="year"></span> Casey Home Bakes
             <script>
                 document.getElementById("year").textContent = new Date().getFullYear();
@@ -372,9 +271,10 @@
         </div>
     </div>
 
-    <!-- External script references -->
-    <script src="drops.js"></script>
-    <script src="dates.js"></script>
+    <!-- External JS files -->
+    <script src="js/drops.js"></script>
+    <script src="js/dates.js"></script>
+    
     <!-- Calendar and drop system script -->
     <script>
         document.addEventListener('DOMContentLoaded', function() {
@@ -394,8 +294,6 @@
                 // Calculate first day of month and total days
                 const firstDayOfMonth = new Date(year, month, 1).getDay();
                 const daysInMonth = new Date(year, month + 1, 0).getDate();
-                
-                // Calculate days from previous month to display
                 const prevMonthDays = new Date(year, month, 0).getDate();
                 
                 // Clear calendar
@@ -415,9 +313,11 @@
                 // Add days from current month and populate drops
                 for (let day = 1; day <= daysInMonth; day++) {
                     const dateStr = `${year}-${String(month + 1).padStart(2, '0')}-${String(day).padStart(2, '0')}`;
-                    const dropsForDay = bakeryDrops.filter(drop => {
-                        if (!drop.releaseDate) return false;
-                        return drop.releaseDate.startsWith(dateStr);
+                    
+                    // Find delivery dates for this day
+                    const deliveriesForDay = dropDeliveryDates.filter(delivery => {
+                        if (!delivery.date) return false;
+                        return delivery.date.startsWith(dateStr);
                     });
                     
                     let dayHTML = `
@@ -425,39 +325,27 @@
                             <div class="calendar-day-number">${day}</div>
                     `;
                     
-                    // Add drops for this day
-                    dropsForDay.forEach(drop => {
-                        // Determine image source
-                        let imageSrc;
-                        if (drop.status === 'coming-soon') {
-                            imageSrc = drop.image || 'img/casey/mistery.jpg';
-                        } else {
-                            imageSrc = drop.image;
-                        }
-                        
-                        // Determine button text and action
-                        let buttonType, buttonText;
-                        if (drop.status === 'available' && drop.url) {
-                            buttonType = 'link';
-                            buttonText = 'ORDER';
-                        } else {
-                            buttonType = 'waitlist';
-                            buttonText = 'NOTIFY';
-                        }
+                    // Add deliveries for this day
+                    deliveriesForDay.forEach(delivery => {
+                        // Get the associated drops for this delivery
+                        const associatedDrops = bakeryDrops.filter(drop => 
+                            delivery.dropIds.includes(drop.id)
+                        );
                         
                         dayHTML += `
-                            <div class="drop-item">
-                                <div class="drop-image-container">
-                                    <img src="${imageSrc}" alt="${drop.title}" class="drop-image">
-                                    <div class="drop-label">${drop.status === 'available' ? 'AVAILABLE' : 'COMING SOON'}</div>
-                                    ${drop.releaseDate ? `<div class="drop-timer" data-countdown="${drop.releaseDate}">Loading...</div>` : ''}
-                                </div>
+                            <div class="drop-delivery">
                                 <div class="drop-content">
-                                    <h3 class="drop-title">${drop.title}</h3>
-                                    ${buttonType === 'link' 
-                                        ? `<a href="${drop.url}" class="drop-button">${buttonText}</a>`
-                                        : `<button class="drop-button waitlist-trigger" data-drop="${drop.title}">${buttonText}</button>`
-                                    }
+                                    <div class="drop-status">${delivery.status.toUpperCase()}</div>
+                                    <h3 class="drop-title">Delivery Date</h3>
+                                    <div class="drop-timer" data-countdown="${delivery.date}">Loading...</div>
+                                    
+                                    <div class="pills-container">
+                                        ${associatedDrops.map(drop => 
+                                            `<span class="drop-pill">${drop.title}</span>`
+                                        ).join('')}
+                                    </div>
+                                    
+                                    <button class="drop-button waitlist-trigger" data-delivery-date="${delivery.date}">NOTIFY ME</button>
                                 </div>
                             </div>
                         `;
@@ -480,11 +368,11 @@
                 }
                 
                 // Set up waitlist buttons
-                const waitlistTriggers = document.querySelectorAll(".waitlist-trigger");
-                waitlistTriggers.forEach(button => {
+                document.querySelectorAll(".waitlist-trigger").forEach(button => {
                     button.addEventListener("click", function() {
-                        const dropName = this.getAttribute('data-drop');
-                        document.getElementById('dropNameField').value = dropName;
+                        const deliveryDate = this.getAttribute('data-delivery-date');
+                        const formattedDate = new Date(deliveryDate).toLocaleDateString();
+                        document.getElementById('dropDateField').value = formattedDate;
                         document.getElementById('waitlistModal').style.display = "flex";
                     });
                 });
@@ -495,9 +383,7 @@
             
             // Function to update countdown timers
             function updateTimers() {
-                const timers = document.querySelectorAll('.drop-timer');
-                
-                timers.forEach(timer => {
+                document.querySelectorAll('.drop-timer').forEach(timer => {
                     const targetDate = new Date(timer.getAttribute('data-countdown')).getTime();
                     const now = new Date().getTime();
                     const distance = targetDate - now;
@@ -508,9 +394,7 @@
                         const days = Math.floor(distance / (1000 * 60 * 60 * 24));
                         const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
                         const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-                        const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-                        
-                        timer.innerHTML = days + "d " + hours + "h " + minutes + "m " + seconds + "s";
+                        timer.innerHTML = days + "d " + hours + "h " + minutes + "m";
                     }
                 });
             }
@@ -533,18 +417,15 @@
                         errorContainer.style.display = "flex";
                         errorMessage.innerText = "Too many signups, please try again in a little while";
                         submitButton.style.display = "none";
-                        formInputs.forEach(input => {
-                            input.style.display = "none";
-                        });
+                        formInputs.forEach(input => input.style.display = "none");
                         backButton.style.display = "block";
                     }
                     
-                    // Compare current time with time of previous sign up
+                    // Check rate limit
                     var time = new Date();
                     var timestamp = time.valueOf();
                     var previousTimestamp = localStorage.getItem("loops-form-timestamp");
                     
-                    // If last sign up was less than a minute ago, display error
                     if (previousTimestamp && Number(previousTimestamp) + 60000 > timestamp) {
                         rateLimit();
                         return;
@@ -555,52 +436,38 @@
                     loadingButton.style.display = "flex";
                     
                     const formData = new FormData(form);
-                    const firstName = formData.get('firstName');
-                    const email = formData.get('email');
-                    const mailingLists = formData.get('mailingLists');
-                    
-                    var formBody = "userGroup=&firstName=" + encodeURIComponent(firstName) + 
-                        "&email=" + encodeURIComponent(email) +
-                        "&mailingLists=" + encodeURIComponent(mailingLists);
+                    var formBody = "userGroup=&firstName=" + encodeURIComponent(formData.get('firstName')) + 
+                        "&email=" + encodeURIComponent(formData.get('email')) +
+                        "&mailingLists=" + encodeURIComponent(formData.get('mailingLists'));
                     
                     fetch(event.target.action, {
                         method: "POST",
                         body: formBody,
-                        headers: {
-                            "Content-Type": "application/x-www-form-urlencoded",
-                        },
+                        headers: {"Content-Type": "application/x-www-form-urlencoded"}
                     })
-                    .then((res) => [res.ok, res.json(), res])
+                    .then(res => [res.ok, res.json(), res])
                     .then(([ok, dataPromise, res]) => {
                         if (ok) {
-                            // If response successful, display success
                             success.style.display = "flex";
                             form.reset();
                         } else {
-                            // If response unsuccessful, display error message or response status
                             dataPromise.then(data => {
                                 errorContainer.style.display = "flex";
-                                errorMessage.innerText = data.message
-                                    ? data.message
-                                    : res.statusText;
+                                errorMessage.innerText = data.message ? data.message : res.statusText;
                             });
                         }
                     })
                     .catch(error => {
-                        // Check for cloudflare error
                         if (error.message === "Failed to fetch") {
                             rateLimit();
                             return;
                         }
-                        // If error caught, display error message if available
                         errorContainer.style.display = "flex";
                         if (error.message) errorMessage.innerText = error.message;
                         localStorage.setItem("loops-form-timestamp", '');
                     })
                     .finally(() => {
-                        formInputs.forEach(input => {
-                            input.style.display = "none";
-                        });
+                        formInputs.forEach(input => input.style.display = "none");
                         loadingButton.style.display = "none";
                         backButton.style.display = "block";
                     });
@@ -619,26 +486,16 @@
                     errorContainer.style.display = "none";
                     errorMessage.innerText = "Oops! Something went wrong, please try again";
                     backButton.style.display = "none";
-                    formInputs.forEach(input => {
-                        input.style.display = "flex";
-                    });
+                    formInputs.forEach(input => input.style.display = "flex");
                     submitButton.style.display = "flex";
                 }
                 
-                var formContainers = document.getElementsByClassName("newsletter-form-container");
-                
-                for (var i = 0; i < formContainers.length; i++) {
-                    var formContainer = formContainers[i];
-                    var handlersAdded = formContainer.classList.contains('newsletter-handlers-added');
-                    if (handlersAdded) continue;
-                    formContainer
-                        .querySelector(".newsletter-form")
-                        .addEventListener("submit", submitHandler);
-                    formContainer
-                        .querySelector(".newsletter-back-button")
-                        .addEventListener("click", resetFormHandler);
+                document.querySelectorAll(".newsletter-form-container").forEach(formContainer => {
+                    if (formContainer.classList.contains('newsletter-handlers-added')) return;
+                    formContainer.querySelector(".newsletter-form").addEventListener("submit", submitHandler);
+                    formContainer.querySelector(".newsletter-back-button").addEventListener("click", resetFormHandler);
                     formContainer.classList.add("newsletter-handlers-added");
-                }
+                });
             }
             
             // Month navigation
@@ -654,16 +511,9 @@
             
             // Modal functionality
             const modal = document.getElementById("waitlistModal");
-            const closeButton = document.querySelector(".close-button");
-            
-            closeButton.addEventListener("click", function() {
-                modal.style.display = "none";
-            });
-            
-            window.addEventListener("click", function(event) {
-                if (event.target === modal) {
-                    modal.style.display = "none";
-                }
+            document.querySelector(".close-button").addEventListener("click", () => modal.style.display = "none");
+            window.addEventListener("click", (event) => {
+                if (event.target === modal) modal.style.display = "none";
             });
             
             // Initialize everything
