@@ -11,11 +11,11 @@ const bakeryDrops = [
     },
     {
         id: 2,
-        title: "Unknown",
+        title: "Nutella Cake",
         status: "coming-soon",
-        image: "img/casey/2025/image3.jpeg",
+        image: "img/casey/nutella-cake.jpg",
         url: "", //
-        releaseDate: null
+        releaseDate: "2025-04-05T00:00:00"
     },
     
     // Coming soon drops
