@@ -13,6 +13,11 @@
             color: white;
             font-family: 'Roboto Mono', monospace;
             overflow-x: hidden;
+        .logo {
+            width: 90px; /* Exact width of 90px */
+            height: auto; /* Maintains aspect ratio */
+            display: inline-block; /* Keeps it inline with text */
+        }
         }
         .calendar {
             max-width: 1200px;
@@ -203,7 +208,7 @@
 <body>
     <div class="container mx-auto px-4 py-8">
         <div class="text-center py-4">
-            <img src="img/casey/casey-bakery.svg" alt="Casey's Home Bakes" class="w-[90px] inline-block">
+            <img src="img/casey/casey-bakery.svg" alt="Casey's Home Bakes" class="logo">
         </div>
         
         <h1 class="text-center text-3xl font-bold mb-8">DROP CALENDAR</h1>
