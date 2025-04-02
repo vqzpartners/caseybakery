@@ -15,10 +15,10 @@ function renderDrops() {
         let buttonType, buttonText;
         if (drop.status === 'available' && drop.url) {
             buttonType = 'link';
-            buttonText = 'ORDER NOW';
+            buttonText = 'ORDENAR AHORA';
         } else {
             buttonType = 'waitlist';
-            buttonText = 'NOTIFY ME';
+            buttonText = 'NOTIFICAME';
         }
         
         // Create the HTML for this drop
@@ -26,7 +26,7 @@ function renderDrops() {
             <div class="drop-item">
                 <div class="drop-image-container">
                     <img src="${imageSrc}" alt="${drop.title}" class="drop-image">
-                    <div class="drop-label">${drop.status === 'available' ? 'AVAILABLE' : 'COMING SOON'}</div>
+                    <div class="drop-label">${drop.status === 'available' ? 'DISPONIBLE' : 'MUY PRONTO'}</div>
                     ${drop.releaseDate ? `<div class="drop-timer" data-countdown="${drop.releaseDate}">Loading...</div>` : ''}
                 </div>
                 <div class="drop-content">
@@ -92,7 +92,7 @@ function setupNewsletterForms() {
         
         const rateLimit = () => {
             errorContainer.style.display = "flex";
-            errorMessage.innerText = "Too many signups, please try again in a little while";
+            errorMessage.innerText = "Muchos intentos, intenta otra vez más tarde";
             submitButton.style.display = "none";
             formInputs.forEach(input => {
                 input.style.display = "none";
