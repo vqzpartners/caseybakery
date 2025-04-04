@@ -3,7 +3,7 @@ const bakeryDrops = [
     // Available drops
     {
         id: 1,
-        title: "Cuchareable Maracuya",
+        title: "Cuchareable de Maracuyá",
         status: "coming-soon", // "available" or "coming-soon"
         image: "img/casey/maracuya.webp", // Will be overridden with mystery image if status is "coming-soon"
         url: "https://cuanto.app/casey/w/6d97e2", // Only used if status is "available"
@@ -31,10 +31,10 @@ const bakeryDrops = [
     // More drops - all without timers
     {
         id: 4,
-        title: "Unknown",
+        title: "Cuchareable de Pistacho",
         status: "coming-soon",
-        image: "", 
-        url: "",
-        releaseDate: null
+        image: "img/casey/pistacho.jpg", 
+        url: "https://cuanto.app/casey/p/c21a35",
+        releaseDate: "2025-04-05T00:00:00"
     }
 ];
