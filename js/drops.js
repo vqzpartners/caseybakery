@@ -21,10 +21,11 @@ const bakeryDrops = [
     // Coming soon drops
     {
         id: 3,
-        title: "Unknown",
+        title: "Carrot Cake",
         status: "coming-soon",
+        image: "img/casey/carrot.jpg",
         url: "",
-        releaseDate: null
+        releaseDate: "2025-04-05T00:00:00"
     },
     
     // More drops - all without timers
@@ -33,38 +34,6 @@ const bakeryDrops = [
         title: "Unknown",
         status: "coming-soon",
         image: "", 
-        url: "",
-        releaseDate: null
-    },
-    {
-        id: 5,
-        title: "Unknown",
-        status: "coming-soon",
-        image: "",
-        url: "",
-        releaseDate: null
-    },
-    {
-        id: 6,
-        title: "Unknown",
-        status: "coming-soon",
-        image: "",
-        url: "",
-        releaseDate: null
-    },
-    {
-        id: 7,
-        title: "Unknown",
-        status: "coming-soon",
-        image: "",
-        url: "",
-        releaseDate: null
-    },
-    {
-        id: 8,
-        title: "Unknown",
-        status: "coming-soon",
-        image: "",
         url: "",
         releaseDate: null
     }
