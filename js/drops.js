@@ -4,9 +4,9 @@ const bakeryDrops = [
     {
         id: 1,
         title: "Cuchareable Maracuya",
-        status: "coming-soon", // "available" or "coming-soon"
+        status: "available", // "available" or "coming-soon"
         image: "img/casey/maracuya.webp", // Will be overridden with mystery image if status is "coming-soon"
-        url: "", // Only used if status is "available"
+        url: "https://cuanto.app/casey/w/6d97e2", // Only used if status is "available"
         releaseDate: "2025-04-05T00:00:00" // Only used if status is "coming-soon" - Format: "YYYY-MM-DDThh:mm:ss"
     },
     {
